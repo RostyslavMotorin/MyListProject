@@ -20,8 +20,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\MyList.API\MyList.API.csproj" />
-  </ItemGroup>
-
 </Project>
