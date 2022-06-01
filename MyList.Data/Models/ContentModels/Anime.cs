@@ -1,20 +1,25 @@
 ﻿using MyList.Data.Models.Tags;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MyList.Data.Models.ContentModels
 {
-    public class Book
+    public class Anime
     {
-        public Guid BookID { get; set; }
+        public Guid AnimeID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string PictureURL { get; set; }
-        public ICollection<BookTag> Tags { get; set; } = new List<BookTag>();
+        public ICollection<AnimeTag> Tags { get; set; } = new List<AnimeTag>();
         public int UserScore { get; set; } //enum
         public int GlobalScore { get; set; } //enum
+        public int CountEpisodes { get; set; }
         public string UserStatus { get; set; } //enum
         public string GlobalStatus { get; set; } //enum
         public ICollection<Creators> Authors { get; set; } = new List<Creators>();
-        public string BookSeries { get; set; }
         public DateTime RelizeDate { get; set; }
     }
 }
