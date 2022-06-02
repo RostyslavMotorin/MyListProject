@@ -1,15 +1,28 @@
+using Microsoft.EntityFrameworkCore;
+using MyList.Data.Contexts;
+using MyList.Web.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
+ConfigurationManager configuration = builder.Configuration;
+
+
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<ApplicationContext>(options =>
+{
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+});
+
+
+builder.Services.AddIdentityServices(configuration);
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

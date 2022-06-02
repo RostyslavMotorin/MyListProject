@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MyList.Data.Models.ContentModels;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyList.Data.Models
 {
-    public class User : IdentityUser<Guid>
+    [Table("Users")]
+    public class ApplicationUser : IdentityUser<Guid>
     {
-        public string Name { get; set; }
+        public string FirstName { get; set; }
         public string Gender { get; set; } //enum
         public string PhotoURL { get; set; }
-        public Role role { get; set; }
-        
+        public ICollection<ApplicationRole> Roles { get; set; } = new List<ApplicationRole>();
         //Collections
         public ICollection<Book> Books { get; set; } = new List<Book>();
         public ICollection<Serial> Serials { get; set; } = new List<Serial>();

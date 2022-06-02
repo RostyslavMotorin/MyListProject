@@ -1,9 +1,11 @@
-﻿using MyList.Data.Models.Tags;
+﻿using System.ComponentModel.DataAnnotations;
+using MyList.Data.Models.Tags;
 
 namespace MyList.Data.Models.ContentModels
 {
     public class Film
     {
+        [Key]
         public Guid FilmID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
