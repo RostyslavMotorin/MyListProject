@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using MyList.Data.Contexts;
-using MyList.Data.Models;
+using MyList.Domain.Common.Models;
 
 namespace MyList.Web.Extensions
 {
@@ -11,7 +11,7 @@ namespace MyList.Web.Extensions
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<ApplicationContext>();
+                .AddEntityFrameworkStores<ApplicationDBContext>();
 
             services.AddAuthentication(options =>
                 {

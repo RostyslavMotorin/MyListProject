@@ -1,10 +1,10 @@
-using Microsoft.EntityFrameworkCore;
-using MyList.Data.Contexts;
+using MyList.Data;
 using MyList.Web.Extensions;
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
-
 
 
 // Add services to the container.
@@ -12,16 +12,25 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<ApplicationContext>(options =>
+builder.Services.AddCors(options =>
 {
-    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowAnyOrigin();
+        });
 });
 
-
+// Add extensions
 builder.Services.AddIdentityServices(configuration);
+builder.Services.AddObjectExtensions();
+builder.Services.AddPersistence(configuration);
 
 var app = builder.Build();
 
+app.UseCors(MyAllowSpecificOrigins);
 
 if (app.Environment.IsDevelopment())
 {
