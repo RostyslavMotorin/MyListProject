@@ -20,7 +20,9 @@ namespace MyList.Application.Services
         public string CreateToken(ApplicationUser user)
         {
             var claims = new List<Claim>{
-                new Claim(JwtRegisteredClaimNames.NameId, user.Email)
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(ClaimTypes.Name, user.FirstName),
+                new Claim("UserName", user.UserName),
             };
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);

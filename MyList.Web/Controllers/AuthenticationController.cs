@@ -1,11 +1,9 @@
 ﻿using System.Net;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MyList.Application.Common.Dto;
 using MyList.Application.Common.Interfaces;
 using MyList.Domain.Common.Models;
-using MyList.Data.Contexts;
-using MyList.Domain.Interfaces;
 
 
 namespace MyList.Web.Controllers
@@ -23,11 +21,11 @@ namespace MyList.Web.Controllers
 
         [AllowAnonymous]
         [HttpPost("Login")]
-        public async Task<ActionResult<UserToken>> Login(LoginModel model)
+        public async Task<ActionResult<IdentityLoginDto>> Login(LoginModel model)
         {
             var response = await _authorizeService.LogInUser(model);
 
-            if (response != null)
+            if (response.Errors == null)
             {
                 return response;
             }
@@ -35,43 +33,15 @@ namespace MyList.Web.Controllers
             {
                 return StatusCode((int)HttpStatusCode.NotAcceptable);
             }
-            //if (ModelState.IsValid)
-            //{
-            //    var user = await _userManager.FindByEmailAsync(model.Email);
-
-            //    if (user == null)
-            //    {
-            //        return Unauthorized();
-            //    }
-
-            //    var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
-            //    if (result.Succeeded)
-            //    {
-            //        return new UserToken
-            //        {
-            //            Email = model.Email,
-            //            Token = _tokenService.CreateToken(user),
-            //        };
-            //    }
-            //}
-            //return Unauthorized(ModelState);
         }
 
-        //[AllowAnonymous]
-        //[HttpGet("Test")]
-        //public async Task<string> Test()
-        //{
-        //    await RoleInitializerService.InitializeAsync(userManager, roleManager);
-        //    return "ok";
-        //}
-
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost("Register")]
-        public async Task<ActionResult<UserToken>> Register(RegisterModel model)
+        public async Task<ActionResult<IdentityLoginDto>> Register(RegisterModel model)
         {
             var response = await _authorizeService.RegisterUser(model);
 
-            if (response != null)
+            if (response.Errors == null)
             {
                 return response;
             }
@@ -79,36 +49,6 @@ namespace MyList.Web.Controllers
             {
                 return StatusCode((int)HttpStatusCode.NotAcceptable);
             }
-            //if (ModelState.IsValid)
-            //{
-            //if (await Check(model))
-            //{
-            //    return StatusCode((int)HttpStatusCode.NotAcceptable);
-            //}
-
-            //    ApplicationUser user = new ApplicationUser { Email = model.Email, UserName = model.UserName, FirstName = model.FirstName, PhotoURL = "", Gender = ""};
-            //    var result = await _userManager.CreateAsync(user, model.Password);
-            //    if (result.Succeeded)
-            //    {
-            //        ApplicationUser currentUSer = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
-            //        await _userManager.AddToRoleAsync(user, "user");
-
-            //        return new UserToken
-            //        {
-            //            Email = model.Email,
-            //            Token = _tokenService.CreateToken(user),
-            //        };
-            //    }
-            //    else
-            //    {
-            //        foreach (var error in result.Errors)
-            //        {
-            //            ModelState.AddModelError(string.Empty, error.Description);
-            //        }
-            //    }
-            //}
-            //return BadRequest(ModelState);
         }
-       
     }
 }

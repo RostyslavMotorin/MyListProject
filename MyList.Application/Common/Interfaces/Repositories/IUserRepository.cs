@@ -2,9 +2,8 @@
 
 namespace MyList.Application.Common.Interfaces.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepository<ApplicationUser>
     {
-        //Task<ApplicationUser> GetForEmail(string email);
-        //Task<ApplicationUser> GetForUserName(string userName);
+        
     }
 }
