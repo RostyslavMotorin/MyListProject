@@ -31,7 +31,7 @@ namespace MyList.Web.Controllers
             }
             else
             {
-                return StatusCode((int)HttpStatusCode.NotAcceptable);
+                return StatusCode((int)HttpStatusCode.Unauthorized);
             }
         }
 
