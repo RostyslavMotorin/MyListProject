@@ -27,6 +27,19 @@ export class AccountService {
     );
   }
 
+  register(model: any){
+    console.log(model);
+    return this.http.post('http://localhost:5222/api/Account/Register', model).pipe(
+      map((response : User | any) => {
+        const user = response
+        if(user){
+          localStorage.setItem('user', JSON.stringify(user));
+          this.currentUSerSource.next(user);
+        }
+      })
+    );
+  }
+
   setCurrentUser(user : User){
     this.currentUSerSource.next(user);
   }

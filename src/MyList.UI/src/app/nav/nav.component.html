@@ -17,7 +17,7 @@
                 <input type="search" class="form-control form-control-dark text-white bg-dark" placeholder="Search..." aria-label="Search">
             </form>
 
-            <div class="dropdown" *ngIf="loggedIn" dropdown>
+            <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
                 <a class="dropdown-toggle text-light" dropdownToggle>Welcome user</a>
                 <div class="dropdown-menu mt-3" *bsDropdownMenu="">
                     <a href="" class="dropdown-item">Edit Profile</a>
@@ -27,10 +27,11 @@
                 </div>
             </div>
 
-            <div class="text-end" *ngIf="!loggedIn">
+            <div class="text-end" *ngIf="(accountService.currentUser$ | async) === null">
                 <a href="../Account/login/login.component.ts" class="btn btn-outline-light me-2">Login</a>
-                <a href="#" class="btn btn-warning ">Sign-up</a>
+                <button type="button" class="btn btn-warning " (click)="register()">Sign-up</button>
             </div>
         </div>
     </div>
-</header> {{loggedIn}}
+</header>
+<app-register *ngIf="registerMode"></app-register>

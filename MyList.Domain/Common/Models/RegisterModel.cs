@@ -14,11 +14,9 @@ namespace MyList.Domain.Common.Models
         [Required(ErrorMessage = "First name not specified")]
         public string FirstName { get; set; }
 
-        [DataType(DataType.Password)]
         [Required(ErrorMessage = "Password not specified")]
         public string Password { get; set; }
 
-        [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Password incorrect")]
         public string PasswordConfirm { get; set; }
     }

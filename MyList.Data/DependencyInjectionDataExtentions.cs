@@ -24,6 +24,10 @@ namespace MyList.Data
 
             services.AddScoped<IApplicationDBContext>(provider => provider.GetRequiredService<ApplicationDBContext>());
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<ISerialRepository, SerialRepository>();
+            services.AddScoped<IFilmRepository, FilmRepository>();
+            services.AddScoped<IAnimeRepository, AnimeRepository>();
 
             return services;
         }

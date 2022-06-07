@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeComponent } from '../home/home.component';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -7,8 +8,10 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  loggedIn: boolean | undefined;
-  constructor(private accountService: AccountService) { }
+   registerMode : boolean | undefined;
+   loggedIn: boolean | undefined;
+  
+  constructor(public accountService: AccountService) { }
 
   ngOnInit(): void {
   }
@@ -22,10 +25,8 @@ export class NavComponent implements OnInit {
     this.accountService.logout();
     this.loggedIn = false;
   }
-
-  getCurrentUser() {
-    this.accountService.currentUser$.subscribe(user => {
-      this.loggedIn = !!user;
-    }, error => { console.log(error) })
+  
+  register(){
+    this.registerMode = true;
   }
 }

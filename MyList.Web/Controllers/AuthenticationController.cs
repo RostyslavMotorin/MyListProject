@@ -13,7 +13,6 @@ namespace MyList.Web.Controllers
     public class AccountController : BaseApiController
     {
         private readonly IAuthorizeService _authorizeService;
-
         public AccountController(IAuthorizeService authorizeService)
         {
             _authorizeService = authorizeService;
