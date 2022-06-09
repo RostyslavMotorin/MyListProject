@@ -1,21 +1,22 @@
-<form>
-    <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-    <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+<h1>Login</h1>
+<form #registerForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+    <h2 class="text-ceter text-primary"></h2>
+    <hr>
+    <div class="form-group">
+        <input type="email" class="form-control" name="email" [(ngModel)]="model.Email" placeholder="Enter your email">
     </div>
-    <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+    <hr>
+    <div class="form-group">
+        <input type="password" class="form-control" name="password" [(ngModel)]=" model.Password " placeholder="Enter your password">
     </div>
-
-    <div class="checkbox mb-3">
-        <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
+    <hr>
+    <div class="ErrorComponent" *ngIf="errors != {}">
+        <div *ngFor="let error of errors | keyvalue">
+            <b style="color: red;">{{error.value}}</b> <br>
+        </div>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
+    <div class="form-group text-center">
+        <button class="btn btn-success mr-2" type="submit">Login</button>
+        <a href="home" class="btn btn-info mr-2">Cancel</a>
+    </div>
 </form>

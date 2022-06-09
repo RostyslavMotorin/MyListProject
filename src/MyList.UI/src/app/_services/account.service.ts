@@ -29,7 +29,7 @@ export class AccountService {
 
   register(model: any){
     console.log(model);
-    return this.http.post('http://localhost:5222/api/Account/Register', model).pipe(
+    return this.http.post(this.baseUrl + 'Account/Register', model).pipe(
       map((response : User | any) => {
         const user = response
         if(user){

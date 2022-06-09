@@ -5,5 +5,6 @@
         Announcement,
         Ongoing,
         Relised,
+        Droped
     }
 }

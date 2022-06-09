@@ -21,5 +21,12 @@ namespace MyList.Web.Controllers
             return Ok(await _gameRepository.GetAllAsync());
         }
 
+        [Authorize]
+        [HttpGet("Get")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            return Ok(await _gameRepository.GetByIdAsync(id));
+        }
+
     }
 }

@@ -22,7 +22,6 @@ namespace MyList.Data.Contexts
         public ApplicationDBContext(DbContextOptions options) : base(options)
         {
             Database.EnsureCreated();
-
         }
 
         public Task<int> SaveChangesAsync()

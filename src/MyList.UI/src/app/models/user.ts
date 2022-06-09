@@ -1,3 +1,4 @@
 export interface User{
-    token: string;
+    Errors: string[] | null;
+    Token: string;
 }
