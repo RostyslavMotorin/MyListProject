@@ -7,7 +7,9 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  
+
+  selected: boolean = false;
+
   constructor(public accountService: AccountService) { }
 
   ngOnInit(): void {

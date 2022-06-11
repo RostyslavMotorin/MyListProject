@@ -8,8 +8,6 @@ using MyList.Domain.Common.Models;
 
 namespace MyList.Web.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class AccountController : BaseApiController
     {
         private readonly IAuthorizeService _authorizeService;
@@ -30,7 +28,7 @@ namespace MyList.Web.Controllers
             }
             else
             {
-                return StatusCode((int)HttpStatusCode.Unauthorized);
+                return StatusCode((int)HttpStatusCode.Unauthorized, new IdentityLoginDto { Errors = response.Errors });
             }
         }
 
@@ -46,7 +44,7 @@ namespace MyList.Web.Controllers
             }
             else
             {
-                return StatusCode((int)HttpStatusCode.NotAcceptable);
+                return StatusCode((int)HttpStatusCode.NotAcceptable, new IdentityLoginDto { Errors = response.Errors });
             }
         }
     }

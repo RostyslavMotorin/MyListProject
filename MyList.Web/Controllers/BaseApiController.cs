@@ -2,8 +2,8 @@
 
 namespace MyList.Web.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class BaseApiController : ControllerBase
     {
 

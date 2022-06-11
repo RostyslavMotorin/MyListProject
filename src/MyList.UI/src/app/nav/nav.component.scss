@@ -2,3 +2,26 @@
 .dropdown-item {
     cursor: pointer;
 }
+
+.me-2 {
+    margin-left: 5px;
+}
+
+.my-sm-0 {
+    margin-left: 5px;
+}
+
+.dropdown-toggle,
+.dropdown-item {
+    cursor: pointer;
+}
+
+.userContainer {}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+}
