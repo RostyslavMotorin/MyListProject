@@ -22,6 +22,21 @@ namespace MyList.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("AnimeAnimeTag", b =>
+                {
+                    b.Property<Guid>("AnimeID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TagsTagID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("AnimeID", "TagsTagID");
+
+                    b.HasIndex("TagsTagID");
+
+                    b.ToTable("AnimeAnimeTag");
+                });
+
             modelBuilder.Entity("ApplicationRoleApplicationUser", b =>
                 {
                     b.Property<Guid>("ApplicationUsersId")
@@ -35,6 +50,51 @@ namespace MyList.Data.Migrations
                     b.HasIndex("RolesId");
 
                     b.ToTable("ApplicationRoleApplicationUser");
+                });
+
+            modelBuilder.Entity("BookBookTag", b =>
+                {
+                    b.Property<Guid>("BooksBookID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TagsTagID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("BooksBookID", "TagsTagID");
+
+                    b.HasIndex("TagsTagID");
+
+                    b.ToTable("BookBookTag");
+                });
+
+            modelBuilder.Entity("FilmFilmTag", b =>
+                {
+                    b.Property<Guid>("FilmsFilmID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TagsTagID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("FilmsFilmID", "TagsTagID");
+
+                    b.HasIndex("TagsTagID");
+
+                    b.ToTable("FilmFilmTag");
+                });
+
+            modelBuilder.Entity("GameGameTag", b =>
+                {
+                    b.Property<Guid>("GamesGameID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TagsTagID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("GamesGameID", "TagsTagID");
+
+                    b.HasIndex("TagsTagID");
+
+                    b.ToTable("GameGameTag");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -522,18 +582,13 @@ namespace MyList.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AnimeID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TagID");
 
-                    b.HasIndex("AnimeID");
-
-                    b.ToTable("AnimeTag");
+                    b.ToTable("AnimeTags");
                 });
 
             modelBuilder.Entity("MyList.Domain.Common.Models.Tags.BookTag", b =>
@@ -542,18 +597,13 @@ namespace MyList.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("BookID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TagID");
 
-                    b.HasIndex("BookID");
-
-                    b.ToTable("BookTag");
+                    b.ToTable("BookTags");
                 });
 
             modelBuilder.Entity("MyList.Domain.Common.Models.Tags.FilmTag", b =>
@@ -562,18 +612,13 @@ namespace MyList.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("FilmID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TagID");
 
-                    b.HasIndex("FilmID");
-
-                    b.ToTable("FilmTag");
+                    b.ToTable("FilmTags");
                 });
 
             modelBuilder.Entity("MyList.Domain.Common.Models.Tags.GameTag", b =>
@@ -582,18 +627,13 @@ namespace MyList.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("GameID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TagID");
 
-                    b.HasIndex("GameID");
-
-                    b.ToTable("GameTag");
+                    b.ToTable("GameTags");
                 });
 
             modelBuilder.Entity("MyList.Domain.Common.Models.Tags.SerialTag", b =>
@@ -606,14 +646,39 @@ namespace MyList.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("SerialID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("TagID");
 
-                    b.HasIndex("SerialID");
+                    b.ToTable("SerialTags");
+                });
 
-                    b.ToTable("SerialTag");
+            modelBuilder.Entity("SerialSerialTag", b =>
+                {
+                    b.Property<Guid>("SerialsSerialID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TagsTagID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("SerialsSerialID", "TagsTagID");
+
+                    b.HasIndex("TagsTagID");
+
+                    b.ToTable("SerialSerialTag");
+                });
+
+            modelBuilder.Entity("AnimeAnimeTag", b =>
+                {
+                    b.HasOne("MyList.Domain.Common.Models.ContentModels.Anime", null)
+                        .WithMany()
+                        .HasForeignKey("AnimeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyList.Domain.Common.Models.Tags.AnimeTag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsTagID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ApplicationRoleApplicationUser", b =>
@@ -627,6 +692,51 @@ namespace MyList.Data.Migrations
                     b.HasOne("MyList.Domain.Common.Models.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BookBookTag", b =>
+                {
+                    b.HasOne("MyList.Domain.Common.Models.ContentModels.Book", null)
+                        .WithMany()
+                        .HasForeignKey("BooksBookID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyList.Domain.Common.Models.Tags.BookTag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsTagID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("FilmFilmTag", b =>
+                {
+                    b.HasOne("MyList.Domain.Common.Models.ContentModels.Film", null)
+                        .WithMany()
+                        .HasForeignKey("FilmsFilmID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyList.Domain.Common.Models.Tags.FilmTag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsTagID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("GameGameTag", b =>
+                {
+                    b.HasOne("MyList.Domain.Common.Models.ContentModels.Game", null)
+                        .WithMany()
+                        .HasForeignKey("GamesGameID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyList.Domain.Common.Models.Tags.GameTag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsTagID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -736,39 +846,19 @@ namespace MyList.Data.Migrations
                         .HasForeignKey("SerialID");
                 });
 
-            modelBuilder.Entity("MyList.Domain.Common.Models.Tags.AnimeTag", b =>
-                {
-                    b.HasOne("MyList.Domain.Common.Models.ContentModels.Anime", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("AnimeID");
-                });
-
-            modelBuilder.Entity("MyList.Domain.Common.Models.Tags.BookTag", b =>
-                {
-                    b.HasOne("MyList.Domain.Common.Models.ContentModels.Book", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("BookID");
-                });
-
-            modelBuilder.Entity("MyList.Domain.Common.Models.Tags.FilmTag", b =>
-                {
-                    b.HasOne("MyList.Domain.Common.Models.ContentModels.Film", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("FilmID");
-                });
-
-            modelBuilder.Entity("MyList.Domain.Common.Models.Tags.GameTag", b =>
-                {
-                    b.HasOne("MyList.Domain.Common.Models.ContentModels.Game", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("GameID");
-                });
-
-            modelBuilder.Entity("MyList.Domain.Common.Models.Tags.SerialTag", b =>
+            modelBuilder.Entity("SerialSerialTag", b =>
                 {
                     b.HasOne("MyList.Domain.Common.Models.ContentModels.Serial", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("SerialID");
+                        .WithMany()
+                        .HasForeignKey("SerialsSerialID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyList.Domain.Common.Models.Tags.SerialTag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsTagID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MyList.Domain.Common.Models.ApplicationUser", b =>
@@ -787,34 +877,21 @@ namespace MyList.Data.Migrations
             modelBuilder.Entity("MyList.Domain.Common.Models.ContentModels.Anime", b =>
                 {
                     b.Navigation("Authors");
-
-                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("MyList.Domain.Common.Models.ContentModels.Book", b =>
                 {
                     b.Navigation("Authors");
-
-                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("MyList.Domain.Common.Models.ContentModels.Film", b =>
                 {
                     b.Navigation("Authors");
-
-                    b.Navigation("Tags");
-                });
-
-            modelBuilder.Entity("MyList.Domain.Common.Models.ContentModels.Game", b =>
-                {
-                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("MyList.Domain.Common.Models.ContentModels.Serial", b =>
                 {
                     b.Navigation("Authors");
-
-                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }

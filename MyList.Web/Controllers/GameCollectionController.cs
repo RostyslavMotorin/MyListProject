@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyList.Application.Common.Interfaces.Repositories;
 using MyList.Domain.Common.Models.ContentModels;
+using MyList.Application.Common.Dto;
 
 namespace MyList.Web.Controllers
 {
@@ -48,6 +49,14 @@ namespace MyList.Web.Controllers
         [Authorize]
         [HttpGet("Find")]
         public async Task<ActionResult> Find(string name)
+        {
+            // find some items
+            return null;
+        }
+
+        [Authorize]
+        [HttpPost("Create")]
+        public async Task<ActionResult> Create(GameDto name)
         {
             // find some items
             return null;

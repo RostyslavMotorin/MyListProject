@@ -10,6 +10,7 @@ using MyList.Application.Common.Interfaces;
 using MyList.Application.Common.Interfaces.Repositories;
 using MyList.Data.Contexts;
 using MyList.Data.Repositories;
+using MyList.Data.Services;
 
 namespace MyList.Data
 {
@@ -29,6 +30,8 @@ namespace MyList.Data
             services.AddScoped<ISerialRepository, SerialRepository>();
             services.AddScoped<IFilmRepository, FilmRepository>();
             services.AddScoped<IAnimeRepository, AnimeRepository>();
+
+            services.AddScoped<TagInitializerService, TagInitializerService>();
 
             return services;
         }

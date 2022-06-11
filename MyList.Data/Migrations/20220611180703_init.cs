@@ -10,6 +10,18 @@ namespace MyList.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AnimeTags",
+                columns: table => new
+                {
+                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AnimeTags", x => x.TagID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -49,6 +61,54 @@ namespace MyList.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BookTags",
+                columns: table => new
+                {
+                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BookTags", x => x.TagID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FilmTags",
+                columns: table => new
+                {
+                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FilmTags", x => x.TagID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GameTags",
+                columns: table => new
+                {
+                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GameTags", x => x.TagID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SerialTags",
+                columns: table => new
+                {
+                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SerialTags", x => x.TagID);
                 });
 
             migrationBuilder.CreateTable(
@@ -311,75 +371,99 @@ namespace MyList.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AnimeTag",
+                name: "AnimeAnimeTag",
                 columns: table => new
                 {
-                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AnimeID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    AnimeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TagsTagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AnimeTag", x => x.TagID);
+                    table.PrimaryKey("PK_AnimeAnimeTag", x => new { x.AnimeID, x.TagsTagID });
                     table.ForeignKey(
-                        name: "FK_AnimeTag_Anime_AnimeID",
+                        name: "FK_AnimeAnimeTag_Anime_AnimeID",
                         column: x => x.AnimeID,
                         principalTable: "Anime",
-                        principalColumn: "AnimeID");
+                        principalColumn: "AnimeID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AnimeAnimeTag_AnimeTags_TagsTagID",
+                        column: x => x.TagsTagID,
+                        principalTable: "AnimeTags",
+                        principalColumn: "TagID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookTag",
+                name: "BookBookTag",
                 columns: table => new
                 {
-                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BookID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    BooksBookID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TagsTagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookTag", x => x.TagID);
+                    table.PrimaryKey("PK_BookBookTag", x => new { x.BooksBookID, x.TagsTagID });
                     table.ForeignKey(
-                        name: "FK_BookTag_Books_BookID",
-                        column: x => x.BookID,
+                        name: "FK_BookBookTag_Books_BooksBookID",
+                        column: x => x.BooksBookID,
                         principalTable: "Books",
-                        principalColumn: "BookID");
+                        principalColumn: "BookID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BookBookTag_BookTags_TagsTagID",
+                        column: x => x.TagsTagID,
+                        principalTable: "BookTags",
+                        principalColumn: "TagID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "FilmTag",
+                name: "FilmFilmTag",
                 columns: table => new
                 {
-                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FilmID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    FilmsFilmID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TagsTagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FilmTag", x => x.TagID);
+                    table.PrimaryKey("PK_FilmFilmTag", x => new { x.FilmsFilmID, x.TagsTagID });
                     table.ForeignKey(
-                        name: "FK_FilmTag_Films_FilmID",
-                        column: x => x.FilmID,
+                        name: "FK_FilmFilmTag_Films_FilmsFilmID",
+                        column: x => x.FilmsFilmID,
                         principalTable: "Films",
-                        principalColumn: "FilmID");
+                        principalColumn: "FilmID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FilmFilmTag_FilmTags_TagsTagID",
+                        column: x => x.TagsTagID,
+                        principalTable: "FilmTags",
+                        principalColumn: "TagID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "GameTag",
+                name: "GameGameTag",
                 columns: table => new
                 {
-                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GameID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    GamesGameID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TagsTagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GameTag", x => x.TagID);
+                    table.PrimaryKey("PK_GameGameTag", x => new { x.GamesGameID, x.TagsTagID });
                     table.ForeignKey(
-                        name: "FK_GameTag_Games_GameID",
-                        column: x => x.GameID,
+                        name: "FK_GameGameTag_Games_GamesGameID",
+                        column: x => x.GamesGameID,
                         principalTable: "Games",
-                        principalColumn: "GameID");
+                        principalColumn: "GameID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GameGameTag_GameTags_TagsTagID",
+                        column: x => x.TagsTagID,
+                        principalTable: "GameTags",
+                        principalColumn: "TagID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -424,21 +508,27 @@ namespace MyList.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SerialTag",
+                name: "SerialSerialTag",
                 columns: table => new
                 {
-                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SerialID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    SerialsSerialID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TagsTagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SerialTag", x => x.TagID);
+                    table.PrimaryKey("PK_SerialSerialTag", x => new { x.SerialsSerialID, x.TagsTagID });
                     table.ForeignKey(
-                        name: "FK_SerialTag_Serials_SerialID",
-                        column: x => x.SerialID,
+                        name: "FK_SerialSerialTag_Serials_SerialsSerialID",
+                        column: x => x.SerialsSerialID,
                         principalTable: "Serials",
-                        principalColumn: "SerialID");
+                        principalColumn: "SerialID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SerialSerialTag_SerialTags_TagsTagID",
+                        column: x => x.TagsTagID,
+                        principalTable: "SerialTags",
+                        principalColumn: "TagID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -447,9 +537,9 @@ namespace MyList.Data.Migrations
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AnimeTag_AnimeID",
-                table: "AnimeTag",
-                column: "AnimeID");
+                name: "IX_AnimeAnimeTag_TagsTagID",
+                table: "AnimeAnimeTag",
+                column: "TagsTagID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ApplicationRoleApplicationUser_RolesId",
@@ -496,14 +586,14 @@ namespace MyList.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BookBookTag_TagsTagID",
+                table: "BookBookTag",
+                column: "TagsTagID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Books_ApplicationUserId",
                 table: "Books",
                 column: "ApplicationUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BookTag_BookID",
-                table: "BookTag",
-                column: "BookID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Creators_AnimeID",
@@ -526,14 +616,19 @@ namespace MyList.Data.Migrations
                 column: "SerialID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_FilmFilmTag_TagsTagID",
+                table: "FilmFilmTag",
+                column: "TagsTagID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Films_ApplicationUserId",
                 table: "Films",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FilmTag_FilmID",
-                table: "FilmTag",
-                column: "FilmID");
+                name: "IX_GameGameTag_TagsTagID",
+                table: "GameGameTag",
+                column: "TagsTagID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Games_ApplicationUserId",
@@ -541,25 +636,20 @@ namespace MyList.Data.Migrations
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GameTag_GameID",
-                table: "GameTag",
-                column: "GameID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Serials_ApplicationUserId",
                 table: "Serials",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SerialTag_SerialID",
-                table: "SerialTag",
-                column: "SerialID");
+                name: "IX_SerialSerialTag_TagsTagID",
+                table: "SerialSerialTag",
+                column: "TagsTagID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AnimeTag");
+                name: "AnimeAnimeTag");
 
             migrationBuilder.DropTable(
                 name: "ApplicationRoleApplicationUser");
@@ -580,22 +670,28 @@ namespace MyList.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "BookTag");
+                name: "BookBookTag");
 
             migrationBuilder.DropTable(
                 name: "Creators");
 
             migrationBuilder.DropTable(
-                name: "FilmTag");
+                name: "FilmFilmTag");
 
             migrationBuilder.DropTable(
-                name: "GameTag");
+                name: "GameGameTag");
 
             migrationBuilder.DropTable(
-                name: "SerialTag");
+                name: "SerialSerialTag");
+
+            migrationBuilder.DropTable(
+                name: "AnimeTags");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "BookTags");
 
             migrationBuilder.DropTable(
                 name: "Anime");
@@ -607,10 +703,19 @@ namespace MyList.Data.Migrations
                 name: "Films");
 
             migrationBuilder.DropTable(
+                name: "FilmTags");
+
+            migrationBuilder.DropTable(
                 name: "Games");
 
             migrationBuilder.DropTable(
+                name: "GameTags");
+
+            migrationBuilder.DropTable(
                 name: "Serials");
+
+            migrationBuilder.DropTable(
+                name: "SerialTags");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

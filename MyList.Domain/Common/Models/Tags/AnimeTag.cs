@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using MyList.Domain.Common.Models.ContentModels;
 
 namespace MyList.Domain.Common.Models.Tags
 {
@@ -7,5 +8,6 @@ namespace MyList.Domain.Common.Models.Tags
         [Key]
         public Guid TagID { get; set; }
         public string Name { get; set; }
+        public ICollection<Anime> Anime { get; set; } = new List<Anime>();
     }
 }

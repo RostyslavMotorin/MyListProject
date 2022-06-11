@@ -10,7 +10,7 @@ namespace MyList.Domain.Common.Models.ContentModels
         public string Name { get; set; }
         public string? Description { get; set; }
         public string? PictureURL { get; set; }
-        public ICollection<BookTag> Tags { get; set; } = new List<BookTag>();
+        public ICollection<BookTag>? Tags { get; set; } = new List<BookTag>();
         public int? UserScore { get; set; } //enum
         public int? GlobalScore { get; set; } //enum
         public string? UserStatus { get; set; } //enum
