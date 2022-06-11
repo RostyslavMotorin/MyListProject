@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyList.Data.Migrations
 {
-    public partial class initmig : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -78,14 +78,14 @@ namespace MyList.Data.Migrations
                 {
                     AnimeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PictureURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserScore = table.Column<int>(type: "int", nullable: false),
-                    GlobalScore = table.Column<int>(type: "int", nullable: false),
-                    CountEpisodes = table.Column<int>(type: "int", nullable: false),
-                    UserStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GlobalStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RelizeDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PictureURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserScore = table.Column<int>(type: "int", nullable: true),
+                    GlobalScore = table.Column<int>(type: "int", nullable: true),
+                    CountEpisodes = table.Column<int>(type: "int", nullable: true),
+                    UserStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GlobalStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RelizeDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ApplicationUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -213,14 +213,14 @@ namespace MyList.Data.Migrations
                 {
                     BookID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PictureURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserScore = table.Column<int>(type: "int", nullable: false),
-                    GlobalScore = table.Column<int>(type: "int", nullable: false),
-                    UserStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GlobalStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BookSeries = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RelizeDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PictureURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserScore = table.Column<int>(type: "int", nullable: true),
+                    GlobalScore = table.Column<int>(type: "int", nullable: true),
+                    UserStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GlobalStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BookSeries = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RelizeDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ApplicationUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -239,13 +239,13 @@ namespace MyList.Data.Migrations
                 {
                     FilmID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PictureURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserScore = table.Column<int>(type: "int", nullable: false),
-                    GlobalScore = table.Column<int>(type: "int", nullable: false),
-                    UserStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GlobalStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RelizeDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PictureURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserScore = table.Column<int>(type: "int", nullable: true),
+                    GlobalScore = table.Column<int>(type: "int", nullable: true),
+                    UserStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GlobalStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RelizeDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ApplicationUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -264,14 +264,14 @@ namespace MyList.Data.Migrations
                 {
                     GameID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PictureURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserScore = table.Column<int>(type: "int", nullable: false),
-                    GlobalScore = table.Column<int>(type: "int", nullable: false),
-                    UserStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GlobalStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GameStudio = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RelizeDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PictureURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserScore = table.Column<int>(type: "int", nullable: true),
+                    GlobalScore = table.Column<int>(type: "int", nullable: true),
+                    UserStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GlobalStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GameStudio = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RelizeDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ApplicationUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -290,14 +290,14 @@ namespace MyList.Data.Migrations
                 {
                     SerialID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PictureURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserScore = table.Column<int>(type: "int", nullable: false),
-                    GlobalScore = table.Column<int>(type: "int", nullable: false),
-                    CountEpisodes = table.Column<int>(type: "int", nullable: false),
-                    UserStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GlobalStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RelizeDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PictureURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserScore = table.Column<int>(type: "int", nullable: true),
+                    GlobalScore = table.Column<int>(type: "int", nullable: true),
+                    CountEpisodes = table.Column<int>(type: "int", nullable: true),
+                    UserStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GlobalStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RelizeDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ApplicationUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>

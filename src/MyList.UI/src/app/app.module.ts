@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './Account/login/login.component';
 import { RegisterComponent } from './Account/register/register.component';
 import { HomeComponent } from './home/home.component';
+import { MainGameComponent } from './Categories/Game/MainPage/main-game/main-game.component';
+import { SoloGameComponent } from './Categories/Game/SoloPage/solo-game/solo-game.component';
+import { ParamsModel } from './_models/params.model';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { HomeComponent } from './home/home.component';
     NavComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    MainGameComponent,
+    SoloGameComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     BsDropdownModule.forRoot()
   ],
-  providers: [],
+  providers: [ParamsModel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

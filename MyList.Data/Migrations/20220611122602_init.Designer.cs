@@ -12,8 +12,8 @@ using MyList.Data.Contexts;
 namespace MyList.Data.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220604151459_init mig")]
-    partial class initmig
+    [Migration("20220611122602_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -257,18 +257,16 @@ namespace MyList.Data.Migrations
                     b.Property<Guid?>("ApplicationUserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CountEpisodes")
+                    b.Property<int?>("CountEpisodes")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GlobalScore")
+                    b.Property<int?>("GlobalScore")
                         .HasColumnType("int");
 
                     b.Property<string>("GlobalStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -276,17 +274,15 @@ namespace MyList.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PictureURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RelizeDate")
+                    b.Property<DateTime?>("RelizeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserScore")
+                    b.Property<int?>("UserScore")
                         .HasColumnType("int");
 
                     b.Property<string>("UserStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AnimeID");
@@ -306,18 +302,15 @@ namespace MyList.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("BookSeries")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GlobalScore")
+                    b.Property<int?>("GlobalScore")
                         .HasColumnType("int");
 
                     b.Property<string>("GlobalStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -325,17 +318,15 @@ namespace MyList.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PictureURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RelizeDate")
+                    b.Property<DateTime?>("RelizeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserScore")
+                    b.Property<int?>("UserScore")
                         .HasColumnType("int");
 
                     b.Property<string>("UserStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookID");
@@ -355,14 +346,12 @@ namespace MyList.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GlobalScore")
+                    b.Property<int?>("GlobalScore")
                         .HasColumnType("int");
 
                     b.Property<string>("GlobalStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -370,17 +359,15 @@ namespace MyList.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PictureURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RelizeDate")
+                    b.Property<DateTime?>("RelizeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserScore")
+                    b.Property<int?>("UserScore")
                         .HasColumnType("int");
 
                     b.Property<string>("UserStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FilmID");
@@ -400,18 +387,15 @@ namespace MyList.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GameStudio")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GlobalScore")
+                    b.Property<int?>("GlobalScore")
                         .HasColumnType("int");
 
                     b.Property<string>("GlobalStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -419,17 +403,15 @@ namespace MyList.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PictureURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RelizeDate")
+                    b.Property<DateTime?>("RelizeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserScore")
+                    b.Property<int?>("UserScore")
                         .HasColumnType("int");
 
                     b.Property<string>("UserStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GameID");
@@ -448,18 +430,16 @@ namespace MyList.Data.Migrations
                     b.Property<Guid?>("ApplicationUserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CountEpisodes")
+                    b.Property<int?>("CountEpisodes")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GlobalScore")
+                    b.Property<int?>("GlobalScore")
                         .HasColumnType("int");
 
                     b.Property<string>("GlobalStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -467,17 +447,15 @@ namespace MyList.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PictureURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RelizeDate")
+                    b.Property<DateTime?>("RelizeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserScore")
+                    b.Property<int?>("UserScore")
                         .HasColumnType("int");
 
                     b.Property<string>("UserStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SerialID");

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyList.Application.Common.Interfaces.Repositories;
+using MyList.Domain.Common.Models.ContentModels;
 
 namespace MyList.Web.Controllers
 {
@@ -28,5 +29,28 @@ namespace MyList.Web.Controllers
             return Ok(await _gameRepository.GetByIdAsync(id));
         }
 
+        [Authorize]
+        [HttpPost("AddToList")]
+        public async Task<ActionResult> AddToList(Game game)
+        {
+            // add item to user list
+            return null;
+        }
+
+        [Authorize]
+        [HttpGet("AddToListForId")]
+        public async Task<ActionResult> AddToList(Guid id)
+        {
+            // add item to user list
+            return null;
+        }
+
+        [Authorize]
+        [HttpGet("Find")]
+        public async Task<ActionResult> Find(string name)
+        {
+            // find some items
+            return null;
+        }
     }
 }
