@@ -8,17 +8,19 @@ import { AccountService } from './_services/account.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit  {
+export class AppComponent implements OnInit {
   title = 'MyListApp';
   users: any;
 
-  constructor(private accountService : AccountService) { }
+  myImage: string = "assets/background.jpg";
+
+  constructor(private accountService: AccountService) { }
   ngOnInit() {
-    this.setCurrentUser();    
+    this.setCurrentUser();
   }
 
-  setCurrentUser(){
-    const user : User = JSON.parse(localStorage.getItem('user')!);
+  setCurrentUser() {
+    const user: User = JSON.parse(localStorage.getItem('user')!);
     this.accountService.setCurrentUser(user);
   }
 }

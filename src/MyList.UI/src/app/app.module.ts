@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppRoutingModule } from './app-routing.module';
+import { ParamsModel } from './_models/params.model';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -13,7 +14,7 @@ import { RegisterComponent } from './Account/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { MainGameComponent } from './Categories/Game/MainPage/main-game/main-game.component';
 import { SoloGameComponent } from './Categories/Game/SoloPage/solo-game/solo-game.component';
-import { ParamsModel } from './_models/params.model';
+import { CreateGameComponent } from './Categories/Game/create-game/create-game.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ParamsModel } from './_models/params.model';
     RegisterComponent,
     HomeComponent,
     MainGameComponent,
-    SoloGameComponent
+    SoloGameComponent,
+    CreateGameComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,21 @@
+.background-image {
+    background-image: url('/assets/background.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    position: relative;
+}
+
+.content {
+    margin-top: 1%;
+    position: relative;
+}
