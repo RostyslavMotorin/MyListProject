@@ -14,6 +14,7 @@ export class MainGameComponent implements OnInit {
   public endpoint: string = "GameCollection/";
   items: Item[] =[];
   public search :string = "";
+  public path : string = "game/soloGame";
 
   constructor(private gameService: GameService, private itemService : ItemService) { }
 

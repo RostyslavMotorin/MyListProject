@@ -7,7 +7,7 @@
     </div>
     <div class="itemsContaiter" *ngIf="items">
         <div *ngFor="let item of items">
-            <app-item [item]="item"></app-item>
+            <app-item [item]="item" [path]="path"></app-item>
         </div>
     </div>
 </div>

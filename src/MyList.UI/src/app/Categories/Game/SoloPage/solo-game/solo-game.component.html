@@ -1,1 +1,49 @@
-<p>solo-game works!</p>
+<div class="mainContaiter">
+    <div class="firstPartContainer">
+        <div class="firstFlexContainer">
+            <img class="image " src="http://localhost:5222/api/Image/GetPhoto?path={{item.pictureURL}} ">
+        </div>
+        <div class="secondFlexContainer">
+            <h2>{{item.name}}</h2>
+            <hr class="bigHR">
+            <p class="p">Game studio: {{item.gameStudio}}</p>
+            <hr class="bigHR">
+            <p class="p">Status: {{item.globalStatus}}</p>
+            <hr class="bigHR">
+            <p class="p">Date relize: {{item.relizeDate | date:'MM/dd/yyyy'}}</p>
+            <!-- <hr class="bigHR">
+        <p>Your score:{{item.userScore}}</p> -->
+            <!-- <hr class="bigHR">
+        <p>Your status:{{item.userStatus}}</p> -->
+            <hr class="bigHR">
+            <p class="p" id="tags"></p>
+            <!-- <div *ngFor="let tag of item.tags">
+                {{tag.name}}
+            </div> -->
+            <hr class="bigHR">
+            <a (click)="addToList()" class="btn">Add to list</a>
+        </div>
+    </div>
+    <div class="secondPartContainer">
+        <div class="">
+            <p class="rating ">{{item.globalScore}}</p>
+        </div>
+        <div class="">
+            <img class="star " src="/assets/star.png " alt="/assets/nonAviableImage.png ">
+        </div>
+    </div>
+
+    <div class="thirdPartContainer">
+        <h2>About a film</h2>
+        <hr class="maxHR">
+        <p class="description">{{item.description}}</p>
+        <hr class="maxHR">
+
+    </div>
+    <footer class="footer">
+        <div class="text-center p-3" style="background-color: #6A9BBF;">
+            © 2022 Copyright:
+            <a class="text-dark" href="#">MyList.com</a>
+        </div>
+    </footer>
+</div>

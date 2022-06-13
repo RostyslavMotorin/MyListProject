@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { GameService } from 'src/app/_services/game.service';
 
 @Component({
   selector: 'app-solo-game',
@@ -8,13 +8,29 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SoloGameComponent implements OnInit {
 
-  id: number;
-    constructor(private activateRoute: ActivatedRoute){
-         
-        this.id = activateRoute.snapshot.params['id'];
-    }
+  id: string;
+  item: any = {};
 
-  ngOnInit(): void {
+  constructor(private gameService: GameService) {
+
   }
 
+  ngOnInit(): void {
+    this.id = localStorage.getItem("itemId");
+
+    this.gameService.getGame(this.id).subscribe(response => {
+      this.item = response;
+      let tags = document.getElementById('tags');
+      let tagsContainer = document.createElement('div');
+      tagsContainer.innerHTML = "Tags: ";
+      this.item.tags.forEach(tag => {
+        tagsContainer.innerHTML += tag.name + " ";
+      });
+      tags.appendChild(tagsContainer);
+    });
+  }
+
+  addToList(){
+    this.gameService.addToList(this.id);
+  }
 }

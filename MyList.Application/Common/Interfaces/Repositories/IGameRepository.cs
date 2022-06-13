@@ -9,5 +9,6 @@ namespace MyList.Application.Common.Interfaces.Repositories
         Task<List<GameTag>> GetAllTags();
         Task CreateASyncDto(GameDto modelDto);
         Task<List<ItemDto>> GetAllItems();
+        Task<Game> GetByIdAsync(string id);
     }
 }

@@ -19,11 +19,8 @@ const routes: Routes = [
       canActivate: [AuthGuard],
       children: [
           { path: 'game/mainGame', component: MainGameComponent },
-          { path: 'game/soloGame', component: SoloGameComponent },
           { path: 'game/createGame', component: CreateGameComponent },
-          // { path: 'game/soloGame/:id', component: SoloGameComponent },
-          // { path: 'lists', component: ListsComponent },
-          // { path: 'messages', component: MessagesComponent },
+          { path: 'game/soloGame', component: SoloGameComponent },
       ]
   },
   { path: '**', component: HomeComponent, pathMatch: 'full' },
@@ -33,4 +30,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  
+ }

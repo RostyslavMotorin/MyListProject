@@ -8,9 +8,8 @@ namespace MyList.Web.Controllers
     {
         Task<IActionResult> GetAll();
         Task<IActionResult> GetAllTags();
-        Task<IActionResult> Get(Guid id);
-        Task<ActionResult> AddToList(T item);
-        Task<ActionResult> AddToList(Guid id);
+        Task<IActionResult> Get(string id);
+        Task<ActionResult> AddToList(string id);
         Task<ActionResult> Find(string name);
         Task<ActionResult> Create(T name);
     }

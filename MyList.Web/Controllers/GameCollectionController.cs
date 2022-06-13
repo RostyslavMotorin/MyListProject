@@ -35,22 +35,15 @@ namespace MyList.Web.Controllers
 
         [Authorize]
         [HttpGet("Get")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> Get(string id)
         {
-            return Ok(await _gameRepository.GetByIdAsync(id));
+            var res = await _gameRepository.GetByIdAsync(id);
+            return Ok(res);
         }
 
         [Authorize]
-        [HttpPost("AddToList")]
-        public async Task<ActionResult> AddToList(GameDto game)
-        {
-            // add item to user list
-            return null;
-        }
-
-        [Authorize]
-        [HttpGet("AddToListForId")]
-        public async Task<ActionResult> AddToList(Guid id)
+        [HttpGet("AddToList")]
+        public async Task<ActionResult> AddToList(string id)
         {
             // add item to user list
             return null;

@@ -1,8 +1,8 @@
 <div class="item">
-    <a href="#" style="text-decoration: none;">
-        <img class="image" src="http://localhost:5222/api/Image/GetPhoto?path={{item.image}}">
-        <p class="rating">{{item.rating}}</p>
-        <img class="star" src="/assets/star.png" alt="/assets/nonAviableImage.png">
-        <p class="name">{{item.name}}</p>
+    <a (click)="navigateWithSomeState()" style=" text-decoration: none; ">
+        <img class="image " src="http://localhost:5222/api/Image/GetPhoto?path={{item.image}} ">
+        <p class="rating ">{{item.rating}}</p>
+        <img class="star " src="/assets/star.png " alt="/assets/nonAviableImage.png ">
+        <p class="name ">{{item.name}}</p>
     </a>
 </div>

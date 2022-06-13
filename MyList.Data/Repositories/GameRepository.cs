@@ -33,11 +33,26 @@ namespace MyList.Data.Repositories
                 if (item.Image == "")
                 {
                     item.Image = "Resources/Images/nonAviableImage.png";
-                }   
+                }
             }
-            return itemsList; 
+            return itemsList;
         }
+        public async Task<Game> GetByIdAsync(string id)
+        {
+            var result = await _context.Games.Include(x => x.Tags).FirstAsync(x => x.GameID == Guid.Parse(id));
 
+            foreach (var tag in result.Tags)
+            {
+                tag.Games = new List<Game>();
+            }
+
+            if (result.PictureURL == "")
+            {
+                result.PictureURL = "Resources/Images/nonAviableImage.png";
+            }
+
+            return result;
+        }
         public async Task CreateASyncDto(GameDto modelDto)
         {
             List<GameTag> tags = new List<GameTag>();
@@ -45,7 +60,7 @@ namespace MyList.Data.Repositories
 
             foreach (var tag in modelDto.Tags)
             {
-                tags.Add(tagsList.Find(x=>x.TagID==Guid.Parse(tag.tagID)));
+                tags.Add(tagsList.Find(x => x.TagID == Guid.Parse(tag.tagID)));
             }
 
             var game = new Game()

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Item } from 'src/app/models/itemDto';
 
 @Component({
@@ -13,10 +14,19 @@ export class ItemComponent implements OnInit {
     image: '',
     rating: ''
   };
+  @Input() path : string;
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
+  }
+  
+  public navigateWithSomeState(): void {
+    localStorage.setItem("itemId",this.item.id);
+    console.log(this.path);
+    this.router.navigateByUrl(this.path);
+    
+    // this.router.navigate([this.path], { state: { id: this.item.id } });
   }
 
 }

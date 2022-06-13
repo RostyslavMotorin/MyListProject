@@ -27,7 +27,15 @@ export class GameService {
 
   createGame(model: Game) {
     const headers = this.paramsModel.createHeader();
-    console.log(model);
     return this.http.post(this.baseUrl + this.endpoint + 'Create', model, { headers });
+  }
+  getGame(id:string){
+    const headers = this.paramsModel.createHeader();
+    return this.http.get(this.baseUrl + this.endpoint + 'Get?id='+id, { headers });
+  }
+
+  addToList(id:string){
+    const headers = this.paramsModel.createHeader();
+    return this.http.get(this.baseUrl + this.endpoint + 'AddToList?id='+id, { headers });
   }
 }
