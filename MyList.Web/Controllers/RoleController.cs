@@ -19,35 +19,35 @@ namespace MyList.Web.Controllers
             _tagInitializerService = tagInitializerService;
         }
 
-        [HttpGet("RoleInit")]
-        [AllowAnonymous]
-        public async Task<ActionResult> RoleInit()
-        {
-            try
-            {
-                await RoleInitializerService.InitializeAsync(_userManager,_roleManager);
-                return Ok("Complete successful");
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
-        }
+        //[HttpGet("RoleInit")]
+        //[AllowAnonymous]
+        //public async Task<ActionResult> RoleInit()
+        //{
+        //    try
+        //    {
+        //        await RoleInitializerService.InitializeAsync(_userManager,_roleManager);
+        //        return Ok("Complete successful");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e);
+        //    }
+        //}
 
-        [HttpGet("TagInit")]
-        [AllowAnonymous]
-        public async Task<ActionResult> TagInit()
-        {
-            try
-            {
-                await _tagInitializerService.InitTags();
-                return Ok("Complete successful");
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
-        }
+        //[HttpGet("TagInit")]
+        //[AllowAnonymous]
+        //public async Task<ActionResult> TagInit()
+        //{
+        //    try
+        //    {
+        //        await _tagInitializerService.InitTags();
+        //        return Ok("Complete successful");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e);
+        //    }
+        //}
 
     }
 }

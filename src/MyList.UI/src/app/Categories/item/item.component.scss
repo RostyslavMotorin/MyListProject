@@ -1,0 +1,36 @@
+.item {
+    width: 202px;
+    height: 278px;
+    margin: 5px;
+    margin-bottom: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.image {
+    width: 200px;
+    height: 248px;
+    left: 230px;
+    top: 314px;
+}
+
+.rating {
+    position: relative;
+    left: 88px;
+    color: black;
+}
+
+.name {
+    position: relative;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    bottom: 40px;
+}
+
+.star {
+    position: relative;
+    bottom: 43px;
+    left: 114px;
+    width: 15px;
+    height: 15px;
+}

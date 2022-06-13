@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/app/models/itemDto';
 import { GameService } from 'src/app/_services/game.service';
+import { ItemService } from 'src/app/_services/item.service';
 
 
 @Component({
@@ -10,13 +11,22 @@ import { GameService } from 'src/app/_services/game.service';
 })
 export class MainGameComponent implements OnInit {
 
-  items: Item[] | undefined;
-  constructor(private gameService: GameService) { }
+  public endpoint: string = "GameCollection/";
+  items: Item[] =[];
+  public search :string = "";
+
+  constructor(private gameService: GameService, private itemService : ItemService) { }
 
   ngOnInit(): void {
-    let test = this.gameService.getAllGames();
-    console.log(test);
-    // this.items = this.gameService.getAllGames();
+
+    this.itemService.getAll(this.endpoint).subscribe(response =>{
+      this.items = response;
+      console.log(this.items);
+    });
   }
 
+  searchMerhod(){
+    console.log(this.search);
+  }
+ 
 }

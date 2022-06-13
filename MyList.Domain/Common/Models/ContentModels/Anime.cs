@@ -11,8 +11,8 @@ namespace MyList.Domain.Common.Models.ContentModels
         public string? Description { get; set; }
         public string? PictureURL { get; set; }
         public ICollection<AnimeTag>? Tags { get; set; } = new List<AnimeTag>();
-        public int? UserScore { get; set; } //enum
-        public int? GlobalScore { get; set; } //enum
+        public float? UserScore { get; set; } //enum
+        public float? GlobalScore { get; set; } //enum
         public int? CountEpisodes { get; set; }
         public string? UserStatus { get; set; } //enum
         public string? GlobalStatus { get; set; } //enum

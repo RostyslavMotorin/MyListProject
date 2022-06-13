@@ -1,3 +1,13 @@
-<p>main-game works!</p>
-<h1 style="color:white">TTTTTTTTTTTTTTTT</h1>
-<a href="" class="btn btn-outline-light me-2">Create</a>
+<div class="mainContaiter">
+    <div class="head">
+        <form class="inputBlock" action="search()" (submit)="searchMerhod()">
+            <input class="inp" [(ngModel)]="search" type="text" placeholder="Search.." name="search">
+        </form>
+        <a href="game/createGame" class="btn">Create</a>
+    </div>
+    <div class="itemsContaiter" *ngIf="items">
+        <div *ngFor="let item of items">
+            <app-item [item]="item"></app-item>
+        </div>
+    </div>
+</div>

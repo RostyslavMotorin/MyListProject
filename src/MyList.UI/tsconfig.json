@@ -5,11 +5,11 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
+    "strict": false, // отвечает за душку ts
+    "noImplicitOverride": false,// отвечает за душку ts
+    "noPropertyAccessFromIndexSignature": false,// отвечает за душку ts
+    "noImplicitReturns": false,// отвечает за душку ts
+    "noFallthroughCasesInSwitch": false,// отвечает за душку ts
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,

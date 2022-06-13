@@ -3,6 +3,7 @@ import { Tag } from "./TagDto";
 export interface Game{
     Name: string;
     Description: string;
-    Tag: Tag[];
+    Tags: Tag[];
+    Picture: any;
     GameStudio : string;
 }

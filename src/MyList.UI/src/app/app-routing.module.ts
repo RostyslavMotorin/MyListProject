@@ -6,6 +6,7 @@ import { LoginComponent } from './Account/login/login.component';
 import { RegisterComponent } from './Account/register/register.component';
 import { MainGameComponent } from './Categories/Game/MainPage/main-game/main-game.component';
 import { SoloGameComponent } from './Categories/Game/SoloPage/solo-game/solo-game.component';
+import { CreateGameComponent } from './Categories/Game/create-game/create-game.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
       children: [
           { path: 'game/mainGame', component: MainGameComponent },
           { path: 'game/soloGame', component: SoloGameComponent },
+          { path: 'game/createGame', component: CreateGameComponent },
           // { path: 'game/soloGame/:id', component: SoloGameComponent },
           // { path: 'lists', component: ListsComponent },
           // { path: 'messages', component: MessagesComponent },

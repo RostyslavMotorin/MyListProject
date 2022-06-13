@@ -1,26 +1,36 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyList.Application.Common.Interfaces.Repositories;
-using MyList.Domain.Common.Models.ContentModels;
 using MyList.Application.Common.Dto;
 
 namespace MyList.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GameCollectionController : BaseApiController
+    public class GameCollectionController : BaseApiController, ICollectionController<GameDto>
     {
         private readonly IGameRepository _gameRepository;
-        public GameCollectionController(IGameRepository gameRepository)
+        private readonly IMapper _mapper;
+        public GameCollectionController(IGameRepository gameRepository, IMapper mapper)
         {
             _gameRepository = gameRepository;
+            _mapper = mapper;
         }
 
         [Authorize]
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _gameRepository.GetAllAsync());
+            return Ok(await _gameRepository.GetAllItems());
+        }
+
+        [Authorize]
+        [HttpGet("GetAllTags")]
+        public async Task<IActionResult> GetAllTags()
+        {
+            var result = _mapper.Map<List<TagDto>>(await _gameRepository.GetAllTags());
+            return Ok(result);
         }
 
         [Authorize]
@@ -32,7 +42,7 @@ namespace MyList.Web.Controllers
 
         [Authorize]
         [HttpPost("AddToList")]
-        public async Task<ActionResult> AddToList(Game game)
+        public async Task<ActionResult> AddToList(GameDto game)
         {
             // add item to user list
             return null;
@@ -56,10 +66,17 @@ namespace MyList.Web.Controllers
 
         [Authorize]
         [HttpPost("Create")]
-        public async Task<ActionResult> Create(GameDto name)
+        public async Task<ActionResult> Create(GameDto model)
         {
-            // find some items
-            return null;
+            await _gameRepository.CreateASyncDto(model);
+            return Ok();
+        }
+
+        [Authorize]
+        [HttpPost("test")]
+        public async Task<ActionResult> Test(IFormFile model)
+        {
+            return Ok();
         }
     }
 }

@@ -321,8 +321,8 @@ namespace MyList.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GlobalScore")
-                        .HasColumnType("int");
+                    b.Property<float?>("GlobalScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("GlobalStatus")
                         .HasColumnType("nvarchar(max)");
@@ -337,8 +337,8 @@ namespace MyList.Data.Migrations
                     b.Property<DateTime?>("RelizeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserScore")
-                        .HasColumnType("int");
+                    b.Property<float?>("UserScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("UserStatus")
                         .HasColumnType("nvarchar(max)");
@@ -365,8 +365,8 @@ namespace MyList.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GlobalScore")
-                        .HasColumnType("int");
+                    b.Property<float?>("GlobalScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("GlobalStatus")
                         .HasColumnType("nvarchar(max)");
@@ -381,8 +381,8 @@ namespace MyList.Data.Migrations
                     b.Property<DateTime?>("RelizeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserScore")
-                        .HasColumnType("int");
+                    b.Property<float?>("UserScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("UserStatus")
                         .HasColumnType("nvarchar(max)");
@@ -406,8 +406,8 @@ namespace MyList.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GlobalScore")
-                        .HasColumnType("int");
+                    b.Property<float?>("GlobalScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("GlobalStatus")
                         .HasColumnType("nvarchar(max)");
@@ -422,8 +422,8 @@ namespace MyList.Data.Migrations
                     b.Property<DateTime?>("RelizeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserScore")
-                        .HasColumnType("int");
+                    b.Property<float?>("UserScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("UserStatus")
                         .HasColumnType("nvarchar(max)");
@@ -450,8 +450,8 @@ namespace MyList.Data.Migrations
                     b.Property<string>("GameStudio")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GlobalScore")
-                        .HasColumnType("int");
+                    b.Property<float?>("GlobalScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("GlobalStatus")
                         .HasColumnType("nvarchar(max)");
@@ -466,8 +466,8 @@ namespace MyList.Data.Migrations
                     b.Property<DateTime?>("RelizeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserScore")
-                        .HasColumnType("int");
+                    b.Property<float?>("UserScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("UserStatus")
                         .HasColumnType("nvarchar(max)");
@@ -494,8 +494,8 @@ namespace MyList.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GlobalScore")
-                        .HasColumnType("int");
+                    b.Property<float?>("GlobalScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("GlobalStatus")
                         .HasColumnType("nvarchar(max)");
@@ -510,8 +510,8 @@ namespace MyList.Data.Migrations
                     b.Property<DateTime?>("RelizeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserScore")
-                        .HasColumnType("int");
+                    b.Property<float?>("UserScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("UserStatus")
                         .HasColumnType("nvarchar(max)");

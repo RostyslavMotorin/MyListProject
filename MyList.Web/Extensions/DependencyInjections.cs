@@ -3,6 +3,7 @@ using MyList.Application.Common.Interfaces.Repositories;
 using MyList.Application.Services;
 using MyList.Data.Repositories;
 using MyList.Domain.Interfaces;
+using MyList.Web.Services;
 
 namespace MyList.Web.Extensions
 {
@@ -13,6 +14,7 @@ namespace MyList.Web.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddScoped<IAuthorizeService, AuthorizeService>();
+            services.AddAutoMapper(typeof(AppMappingProfile));
 
             return services;
         }

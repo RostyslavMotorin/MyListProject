@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppRoutingModule } from './app-routing.module';
 import { ParamsModel } from './_models/params.model';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -15,6 +16,8 @@ import { HomeComponent } from './home/home.component';
 import { MainGameComponent } from './Categories/Game/MainPage/main-game/main-game.component';
 import { SoloGameComponent } from './Categories/Game/SoloPage/solo-game/solo-game.component';
 import { CreateGameComponent } from './Categories/Game/create-game/create-game.component';
+import { UploadComponent } from './Categories/upload/upload.component';
+import { ItemComponent } from './Categories/item/item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { CreateGameComponent } from './Categories/Game/create-game/create-game.c
     HomeComponent,
     MainGameComponent,
     SoloGameComponent,
-    CreateGameComponent
+    CreateGameComponent,
+    UploadComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,7 @@ import { CreateGameComponent } from './Categories/Game/create-game/create-game.c
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
+    NgMultiSelectDropDownModule.forRoot(),
     BsDropdownModule.forRoot()
   ],
   providers: [ParamsModel],

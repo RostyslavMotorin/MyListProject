@@ -1,0 +1,53 @@
+.mainContaiter {
+    height: 1500px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+.itemsContaiter {
+    padding: 15px;
+    max-width: 1060px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.btn {
+    border: 1px solid;
+    margin-right: 23px;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background: #6A9BBF;
+}
+
+.inputBlock {
+    margin-top: 20px;
+    margin-left: 23px;
+}
+
+.inp {
+    text-align: center;
+    box-sizing: border-box;
+    width: 277px;
+    height: 38px;
+    left: 230px;
+    top: 175px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 78px;
+}
+
+.inp:active {
+    border: 1px solid #6A9BBF(0, 0, 0, 0.6);
+}

@@ -1,6 +1,4 @@
-import { Guid } from 'guid-typescript';
-
 export interface Tag{
-    TagID: Guid;
+    TagID: string;
     Name: string;
 }

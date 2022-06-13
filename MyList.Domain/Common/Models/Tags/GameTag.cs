@@ -8,6 +8,6 @@ namespace MyList.Domain.Common.Models.Tags
         [Key]
         public Guid TagID { get; set; }
         public string Name { get; set; }
-        public ICollection<Game> Games { get; set; } = new List<Game>();
+        public ICollection<Game>? Games { get; set; } = new List<Game>();
     }
 }

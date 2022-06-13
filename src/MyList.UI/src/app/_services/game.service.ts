@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Game } from '../models/gameDto';
 import { ParamsModel } from '../_models/params.model';
@@ -10,17 +10,24 @@ import { ParamsModel } from '../_models/params.model';
 export class GameService {
 
   private baseUrl: string | undefined;
-  private endpoint = "GameCollection";
-
+  private endpoint = "GameCollection/";
   constructor(private http: HttpClient, private paramsModel: ParamsModel) {
     this.baseUrl = paramsModel.getUrl();
   }
 
-  getAllGames(){
-    return this.http.get(this.baseUrl + this.endpoint + 'GetAll');
+  getAllGames() {
+    const headers = this.paramsModel.createHeader();
+    return this.http.get(this.baseUrl + this.endpoint + 'GetAll', { headers });
   }
 
-  createGame(model : Game){
-    return this.http.post(this.baseUrl + this.endpoint + 'Create', model);
+  getAllTags() {
+    const headers = this.paramsModel.createHeader();
+    return this.http.get(this.baseUrl + this.endpoint + 'GetAllTags', { headers });
+  }
+
+  createGame(model: Game) {
+    const headers = this.paramsModel.createHeader();
+    console.log(model);
+    return this.http.post(this.baseUrl + this.endpoint + 'Create', model, { headers });
   }
 }

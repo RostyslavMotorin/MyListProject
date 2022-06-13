@@ -1,4 +1,6 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '../models/user';
 
     @Injectable()
 
@@ -10,4 +12,15 @@ import { Injectable } from '@angular/core';
         public getUrl() {
             return this.baseUrl;
         }
+
+        createHeader() {
+            var user: User = JSON.parse(localStorage.getItem("user")!!);
+            let token = "Bearer ";
+            token += user.token;
+        
+            const headers = new HttpHeaders(
+              { Authorization: token! }
+            );
+            return headers;
+          }
     }
