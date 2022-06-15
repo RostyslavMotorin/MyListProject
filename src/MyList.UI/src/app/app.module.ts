@@ -18,13 +18,18 @@ import { SoloGameComponent } from './Categories/Game/SoloPage/solo-game/solo-gam
 import { CreateGameComponent } from './Categories/Game/create-game/create-game.component';
 import { UploadComponent } from './Categories/upload/upload.component';
 import { ItemComponent } from './Categories/item/item.component';
-import { MainSerialComponent } from './Categories/Serial/main-serial/main-serial.component';
-import { MainPageComponent } from './Categories/Serial/main-page/main-page.component';
-import { SoloPageComponent } from './Categories/Serial/solo-page/solo-page.component';
+import { MainSerialComponent } from './Categories/Serial/MainPage/main-serial/main-serial.component';
+import { SoloSerialComponent } from './Categories/Serial/SoloPage/solo-serial/solo-serial.component';
 import { CreateSerialComponent } from './Categories/Serial/create-serial/create-serial.component';
-import { CreateFilmComponent } from './Categories/Film/create-film/create-film.component';
+import { MainAnimeComponent } from './Categories/Anime/MainPage/main-anime/main-anime.component';
+import { SoloAnimeComponent } from './Categories/Anime/SoloPage/solo-anime/solo-anime.component';
 import { CreateAnimeComponent } from './Categories/Anime/create-anime/create-anime.component';
+import { MainBookComponent } from './Categories/Book/MainPage/main-book/main-book.component';
+import { SoloBookComponent } from './Categories/Book/SoloPage/solo-book/solo-book.component';
 import { CreateBookComponent } from './Categories/Book/create-book/create-book.component';
+import { MainFilmComponent } from './Categories/Film/MainPage/main-film/main-film.component';
+import { SoloFilmComponent } from './Categories/Film/SoloPage/solo-film/solo-film.component';
+import { CreateFilmComponent } from './Categories/Film/create-film/create-film.component';
 
 @NgModule({
   declarations: [
@@ -39,12 +44,17 @@ import { CreateBookComponent } from './Categories/Book/create-book/create-book.c
     UploadComponent,
     ItemComponent,
     MainSerialComponent,
-    MainPageComponent,
-    SoloPageComponent,
+    SoloSerialComponent,
     CreateSerialComponent,
-    CreateFilmComponent,
+    MainAnimeComponent,
+    SoloAnimeComponent,
     CreateAnimeComponent,
-    CreateBookComponent
+    MainBookComponent,
+    SoloBookComponent,
+    CreateBookComponent,
+    MainFilmComponent,
+    SoloFilmComponent,
+    CreateFilmComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ namespace MyList.Web.Controllers
         }
 
         [Authorize]
-        [HttpGet("GetAll")]
+        [HttpGet("GetAll")] 
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _serialRepository.GetAllItems());

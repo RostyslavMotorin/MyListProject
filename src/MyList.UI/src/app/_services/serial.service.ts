@@ -8,7 +8,7 @@ import { ParamsModel } from '../_models/params.model';
 export class SerialService {
 
   private baseUrl: string | undefined;
-  private endpoint = "SerialCollection/";
+  private endpoint = "Serial Collection/";
   
   constructor(private http: HttpClient, private paramsModel: ParamsModel) {
     this.baseUrl = paramsModel.getUrl();

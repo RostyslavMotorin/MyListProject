@@ -55,7 +55,7 @@ namespace MyList.Data.Repositories
 
             return result;
         }
-        public async Task CreateASyncDto(FilmDto modelDto)
+        public async Task CreateASyncDto(SerialDto modelDto)
         {
             List<SerialTag> tags = new List<SerialTag>();
             var tagsList = await _context.SerialTags.ToListAsync();

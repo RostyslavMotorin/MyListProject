@@ -41,7 +41,7 @@ export class CreateGameComponent implements OnInit {
   create() {
     this.model.Tags = this.selectedItems;
     this.model.Picture = this.response.dbPath;
-    this.gameServivce.createGame(this.model as Game).subscribe(response => {
+    this.gameServivce.create(this.model as Game).subscribe(response => {
     this.router.navigateByUrl('game/mainGame');
     }, error => {
       console.log(error)
