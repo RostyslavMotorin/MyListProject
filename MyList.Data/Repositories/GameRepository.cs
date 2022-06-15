@@ -79,10 +79,10 @@ namespace MyList.Data.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task AddToList(string gameId)
+        public async Task AddToList(string id)
         {
             var userId = _currentUserService.UserId;
-            var item = await _context.Games.FindAsync(Guid.Parse(gameId));
+            var item = await _context.Games.FindAsync(Guid.Parse(id));
             var user = await _context.Users.FindAsync(Guid.Parse(userId.ToString()));
             user.Games.Add(item);
             await _context.SaveChangesAsync();

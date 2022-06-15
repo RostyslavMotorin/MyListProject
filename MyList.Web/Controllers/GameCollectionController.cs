@@ -6,8 +6,6 @@ using MyList.Application.Common.Dto;
 
 namespace MyList.Web.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class GameCollectionController : BaseApiController, ICollectionController<GameDto>
     {
         private readonly IGameRepository _gameRepository;
@@ -62,13 +60,6 @@ namespace MyList.Web.Controllers
         public async Task<ActionResult> Create(GameDto model)
         {
             await _gameRepository.CreateASyncDto(model);
-            return Ok();
-        }
-
-        [Authorize]
-        [HttpPost("test")]
-        public async Task<ActionResult> Test(IFormFile model)
-        {
             return Ok();
         }
     }
