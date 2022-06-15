@@ -14,7 +14,9 @@ namespace MyList.Web.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddScoped<IAuthorizeService, AuthorizeService>();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddAutoMapper(typeof(AppMappingProfile));
+            services.AddHttpContextAccessor();
 
             return services;
         }

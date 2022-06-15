@@ -18,6 +18,13 @@ import { SoloGameComponent } from './Categories/Game/SoloPage/solo-game/solo-gam
 import { CreateGameComponent } from './Categories/Game/create-game/create-game.component';
 import { UploadComponent } from './Categories/upload/upload.component';
 import { ItemComponent } from './Categories/item/item.component';
+import { MainSerialComponent } from './Categories/Serial/main-serial/main-serial.component';
+import { MainPageComponent } from './Categories/Serial/main-page/main-page.component';
+import { SoloPageComponent } from './Categories/Serial/solo-page/solo-page.component';
+import { CreateSerialComponent } from './Categories/Serial/create-serial/create-serial.component';
+import { CreateFilmComponent } from './Categories/Film/create-film/create-film.component';
+import { CreateAnimeComponent } from './Categories/Anime/create-anime/create-anime.component';
+import { CreateBookComponent } from './Categories/Book/create-book/create-book.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +37,14 @@ import { ItemComponent } from './Categories/item/item.component';
     SoloGameComponent,
     CreateGameComponent,
     UploadComponent,
-    ItemComponent
+    ItemComponent,
+    MainSerialComponent,
+    MainPageComponent,
+    SoloPageComponent,
+    CreateSerialComponent,
+    CreateFilmComponent,
+    CreateAnimeComponent,
+    CreateBookComponent
   ],
   imports: [
     BrowserModule,

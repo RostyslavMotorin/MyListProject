@@ -31,6 +31,8 @@ export class SoloGameComponent implements OnInit {
   }
 
   addToList(){
-    this.gameService.addToList(this.id);
+    this.gameService.addToList(this.id).subscribe(response =>{
+      console.log(response);
+    });
   }
 }

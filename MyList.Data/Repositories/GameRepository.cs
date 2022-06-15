@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using MyList.Application.Common.Dto;
+using MyList.Application.Common.Interfaces;
 using MyList.Application.Common.Interfaces.Repositories;
 using MyList.Data.Contexts;
 using MyList.Domain.Common.Models.ContentModels;
@@ -13,10 +14,12 @@ namespace MyList.Data.Repositories
     {
         private readonly ApplicationDBContext _context;
         private readonly IMapper _mapper;
-        public GameRepository(ApplicationDBContext context, IMapper mapper) : base(context)
+        private readonly ICurrentUserService _currentUserService;
+        public GameRepository(ApplicationDBContext context, IMapper mapper, ICurrentUserService currentUserService) : base(context)
         {
             _context = context;
             _mapper = mapper;
+            _currentUserService = currentUserService;
         }
 
         public async Task<List<GameTag>> GetAllTags()
@@ -73,6 +76,15 @@ namespace MyList.Data.Repositories
                 PictureURL = modelDto.Picture
             };
             await _context.Games.AddAsync(game);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddToList(string gameId)
+        {
+            var userId = _currentUserService.UserId;
+            var game = await _context.Games.FindAsync(Guid.Parse(gameId));
+            var user = await _context.Users.FindAsync(Guid.Parse(userId.ToString()));
+            user.Games.Add(game);
             await _context.SaveChangesAsync();
         }
     }

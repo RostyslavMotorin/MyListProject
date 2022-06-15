@@ -12,18 +12,18 @@ namespace MyList.Web.Services
             _httpContextAccessor = http_httpContextAccessor;
         }
 
-        public int? UserUd
+        public Guid? UserId
         {
             get
             {
                 var id = _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-                if(id != null && int.TryParse(id, out var userId))
+                if(id != null && Guid.TryParse(id, out var userId))
                     return userId;
                 return null;
             }
         }
 
-        public bool IsAuthorized => UserUd != null;
+        public bool IsAuthorized => UserId != null;
 
         public bool IsInRole(string roleName)
         {

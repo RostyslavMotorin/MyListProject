@@ -20,6 +20,7 @@ namespace MyList.Application.Services
         public string CreateToken(ApplicationUser user)
         {
             var claims = new List<Claim>{
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(ClaimTypes.Name, user.FirstName),
                 new Claim("UserName", user.UserName),
