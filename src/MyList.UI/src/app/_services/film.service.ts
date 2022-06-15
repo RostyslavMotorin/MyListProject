@@ -1,17 +1,15 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Game } from '../models/gameDto';
 import { ParamsModel } from '../_models/params.model';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class GameService {
+export class FilmService {
 
   private baseUrl: string | undefined;
-  private endpoint = "GameCollection/";
-
+  private endpoint = "FilmCollection/";
+  
   constructor(private http: HttpClient, private paramsModel: ParamsModel) {
     this.baseUrl = paramsModel.getUrl();
   }
@@ -26,11 +24,11 @@ export class GameService {
     return this.http.get(this.baseUrl + this.endpoint + 'GetAllTags', { headers });
   }
 
-  create(model: Game) {
+  create(model: any) {
     const headers = this.paramsModel.createHeader();
     return this.http.post(this.baseUrl + this.endpoint + 'Create', model, { headers });
   }
-  get(id:string){
+  getById(id:string){
     const headers = this.paramsModel.createHeader();
     return this.http.get(this.baseUrl + this.endpoint + 'Get?id='+id, { headers });
   }

@@ -20,6 +20,33 @@ namespace MyList.Web.Services
                 .ForMember(dest => dest.Image, opt => opt.MapFrom(src => $"{src.PictureURL}"))
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => $"{src.GameID}"))
                 .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => $"{src.GlobalScore.ToString()}"));
+
+            CreateMap<Film, ItemDto>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => $"{src.Name}"))
+                .ForMember(dest => dest.Image, opt => opt.MapFrom(src => $"{src.PictureURL}"))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => $"{src.FilmID}"))
+                .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => $"{src.GlobalScore.ToString()}"));
+
+            CreateMap<Anime, ItemDto>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => $"{src.Name}"))
+                .ForMember(dest => dest.Image, opt => opt.MapFrom(src => $"{src.PictureURL}"))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => $"{src.AnimeID}"))
+                .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => $"{src.GlobalScore.ToString()}"));
+
+
+            CreateMap<Serial, ItemDto>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => $"{src.Name}"))
+                .ForMember(dest => dest.Image, opt => opt.MapFrom(src => $"{src.PictureURL}"))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => $"{src.SerialID}"))
+                .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => $"{src.GlobalScore.ToString()}"));
+
+
+            CreateMap<Book, ItemDto>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => $"{src.Name}"))
+                .ForMember(dest => dest.Image, opt => opt.MapFrom(src => $"{src.PictureURL}"))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => $"{src.BookID}"))
+                .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => $"{src.GlobalScore.ToString()}"));
+
         }
     }
 }

@@ -29,8 +29,8 @@ namespace MyList.Data.Repositories
 
         public async Task<List<ItemDto>> GetAllItems()
         {
-            var gameList = await _context.Games.ToListAsync();
-            var itemsList = _mapper.Map<List<ItemDto>>(gameList);
+            var contextList = await _context.Games.ToListAsync();
+            var itemsList = _mapper.Map<List<ItemDto>>(contextList);
             foreach (var item in itemsList)
             {
                 if (item.Image == "")
@@ -66,7 +66,7 @@ namespace MyList.Data.Repositories
                 tags.Add(tagsList.Find(x => x.TagID == Guid.Parse(tag.tagID)));
             }
 
-            var game = new Game()
+            var item = new Game()
             {
                 GameID = new Guid(),
                 Name = modelDto.Name,
@@ -75,16 +75,16 @@ namespace MyList.Data.Repositories
                 Tags = tags,
                 PictureURL = modelDto.Picture
             };
-            await _context.Games.AddAsync(game);
+            await _context.Games.AddAsync(item);
             await _context.SaveChangesAsync();
         }
 
         public async Task AddToList(string gameId)
         {
             var userId = _currentUserService.UserId;
-            var game = await _context.Games.FindAsync(Guid.Parse(gameId));
+            var item = await _context.Games.FindAsync(Guid.Parse(gameId));
             var user = await _context.Users.FindAsync(Guid.Parse(userId.ToString()));
-            user.Games.Add(game);
+            user.Games.Add(item);
             await _context.SaveChangesAsync();
         }
     }

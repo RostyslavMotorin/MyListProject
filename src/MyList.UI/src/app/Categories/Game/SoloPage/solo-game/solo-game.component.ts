@@ -18,7 +18,7 @@ export class SoloGameComponent implements OnInit {
   ngOnInit(): void {
     this.id = localStorage.getItem("itemId");
 
-    this.gameService.getGame(this.id).subscribe(response => {
+    this.gameService.get(this.id).subscribe(response => {
       this.item = response;
       let tags = document.getElementById('tags');
       let tagsContainer = document.createElement('div');
