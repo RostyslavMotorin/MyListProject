@@ -30,6 +30,7 @@ namespace MyList.Data
             services.AddScoped<ISerialRepository, SerialRepository>();
             services.AddScoped<IFilmRepository, FilmRepository>();
             services.AddScoped<IAnimeRepository, AnimeRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped<TagInitializerService, TagInitializerService>();
 

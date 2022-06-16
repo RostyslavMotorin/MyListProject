@@ -41,9 +41,9 @@ namespace MyList.Web.Controllers
 
         [Authorize]
         [HttpGet("AddToList")]
-        public async Task<ActionResult> AddToList(string id)
+        public async Task<ActionResult> AddToList(AddCollectionDto collecitonDto)
         {
-            await _gameRepository.AddToList(id);
+            await _gameRepository.AddToList(collecitonDto);
             return Ok();
         }
 

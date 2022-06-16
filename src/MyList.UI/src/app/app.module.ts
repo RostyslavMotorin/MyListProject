@@ -30,6 +30,8 @@ import { CreateBookComponent } from './Categories/Book/create-book/create-book.c
 import { MainFilmComponent } from './Categories/Film/MainPage/main-film/main-film.component';
 import { SoloFilmComponent } from './Categories/Film/SoloPage/solo-film/solo-film.component';
 import { CreateFilmComponent } from './Categories/Film/create-film/create-film.component';
+import { CollectionComponent } from './Collection/collection/collection.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { CreateFilmComponent } from './Categories/Film/create-film/create-film.c
     MainFilmComponent,
     SoloFilmComponent,
     CreateFilmComponent,
+    CollectionComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

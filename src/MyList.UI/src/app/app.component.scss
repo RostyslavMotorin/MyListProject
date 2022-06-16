@@ -23,10 +23,24 @@
     // position: relative;
 }
 
-.mainContaiter {
-    height: 1500px;
-    width: 70%;
+.layout-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    .layout-content {
+        width: 100%;
+        flex: auto 1 1;
+        overflow-y: auto;
+        scrollbar-width: none;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        background-color: white;
+    }
+}
+
+.footer {
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
 }

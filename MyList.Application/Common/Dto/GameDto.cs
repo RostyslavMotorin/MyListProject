@@ -7,5 +7,6 @@
         public string? Picture { get; set; }
         public ICollection<TagDto>? Tags { get; set; }
         public string? GameStudio { get; set; }
+
     }
 }

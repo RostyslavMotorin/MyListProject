@@ -77,11 +77,12 @@ namespace MyList.Data.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task AddToList(string id)
+        public async Task AddToList(AddCollectionDto collectionDto)
         {
             var userId = _currentUserService.UserId;
-            var item = await _context.Books.FindAsync(Guid.Parse(id));
-            var user = await _context.Users.FindAsync(Guid.Parse(userId.ToString()));
+            var item = await _context.Books.FindAsync(Guid.Parse(collectionDto.Id));
+            item.UserStatus = collectionDto.Status;
+            var user = await _context.Users.FindAsync(userId);
             user.Books.Add(item);
             await _context.SaveChangesAsync();
         }

@@ -10,6 +10,6 @@ namespace MyList.Application.Common.Interfaces.Repositories
         Task CreateASyncDto(SerialDto modelDto);
         Task<List<ItemDto>> GetAllItems();
         Task<Serial> GetByIdAsync(string id);
-        Task AddToList(string id);
+        Task AddToList(AddCollectionDto id);
     }
 }

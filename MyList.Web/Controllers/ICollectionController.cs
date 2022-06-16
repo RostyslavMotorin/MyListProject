@@ -9,7 +9,7 @@ namespace MyList.Web.Controllers
         Task<IActionResult> GetAll();
         Task<IActionResult> GetAllTags();
         Task<IActionResult> Get(string id);
-        Task<ActionResult> AddToList(string id);
+        Task<ActionResult> AddToList(AddCollectionDto collecitonDto);
         Task<ActionResult> Find(string name);
         Task<ActionResult> Create(T name);
     }

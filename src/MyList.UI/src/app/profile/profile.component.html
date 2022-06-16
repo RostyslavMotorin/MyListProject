@@ -1,0 +1,51 @@
+<div class="mainContaiter" *ngIf="!isActiveCollection">
+    <div class="firstPartContainer">
+        <div class="firstFlexContainer">
+            <img class="image " src="http://localhost:5222/api/Image/GetPhoto?path={{user.photoURL}} ">
+            <div class="secondPartContainer">
+                <br>
+                <h4>Gender: {{user.gender}}</h4>
+                <h4>SecondName: {{user.gender}}</h4>
+                <h4>Age: 19</h4>
+            </div>
+        </div>
+
+        <div class="secondFlexContainer">
+            <div class="mainFrame">
+                <h2>{{user.firstName}}</h2>
+                <h4>{{user.userName}}</h4>
+                <hr class="bigHR">
+            </div>
+            <div class="container">
+                <a (click)="selectCollection('Serials')" class="button"><span>&#9733;</span>Serials</a>
+            </div>
+            <div class="container">
+                <a (click)="selectCollection('Films')" class="button"><span>&#9733;</span>Films</a>
+            </div>
+            <div class="container">
+                <a (click)="selectCollection('Anime')" class="button"><span>&#9733;</span>Anime</a>
+            </div>
+            <div class="container">
+                <a (click)="selectCollection('Games')" class="button"><span>&#9733;</span>Games</a>
+            </div>
+            <div class="container">
+                <a (click)="selectCollection('Books')" class="button"><span>&#9733;</span>Books</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="collectionContainer" *ngIf="isActiveCollection">
+    <div class="selectContainer">
+        <div class="planed">
+            <h5>Planed</h5>
+        </div>
+        <div class="progress">
+            <h5>Progress</h5>
+        </div>
+        <div class="finished">
+            <h5>Finished</h5>
+        </div>
+    </div>
+
+</div>

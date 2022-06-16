@@ -19,6 +19,8 @@ import { CreateAnimeComponent } from './Categories/Anime/create-anime/create-ani
 import { MainBookComponent } from './Categories/Book/MainPage/main-book/main-book.component';
 import { SoloBookComponent } from './Categories/Book/SoloPage/solo-book/solo-book.component';
 import { CreateBookComponent } from './Categories/Book/create-book/create-book.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CollectionComponent } from './Collection/collection/collection.component';
 
 
 const routes: Routes = [
@@ -45,6 +47,9 @@ const routes: Routes = [
           { path: 'book/mainBook', component: MainBookComponent },
           { path: 'book/soloBook', component: SoloBookComponent },
           { path: 'book/createBook', component: CreateBookComponent },
+
+          { path: 'profile', component: ProfileComponent },
+          { path: 'collection', component: CollectionComponent },
       ]
   },
   { path: '**', component: HomeComponent, pathMatch: 'full' },

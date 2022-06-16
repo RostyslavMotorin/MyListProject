@@ -4,6 +4,6 @@ namespace MyList.Application.Common.Interfaces.Repositories
 {
     public interface IUserRepository : IRepository<ApplicationUser>
     {
-        
+        Task<ApplicationUser> GetUserAsync();
     }
 }

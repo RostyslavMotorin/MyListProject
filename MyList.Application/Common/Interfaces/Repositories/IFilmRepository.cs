@@ -10,6 +10,6 @@ namespace MyList.Application.Common.Interfaces.Repositories
         Task CreateASyncDto(FilmDto modelDto);
         Task<List<ItemDto>> GetAllItems();
         Task<Film> GetByIdAsync(string id);
-        Task AddToList(string id);
+        Task AddToList(AddCollectionDto id);
     }
 }

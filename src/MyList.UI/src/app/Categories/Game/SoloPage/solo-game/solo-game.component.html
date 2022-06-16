@@ -21,7 +21,16 @@
                 {{tag.name}}
             </div> -->
             <hr class="bigHR">
-            <a (click)="addToList()" class="btn">Add to list</a>
+            <div class="dropdown" dropdown>
+                <a class="btn" dropdownToggle>Change status</a>
+                <div class="dropdown-menu mt-3" *bsDropdownMenu="">
+                    <a class="dropdown-item" (click)="addToList('Planed')">Planed</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item" (click)="addToList('Progress')">Progress</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item" (click)="addToList('Finished')">Finished</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="secondPartContainer">
@@ -40,10 +49,4 @@
         <hr class="maxHR">
 
     </div>
-    <footer class="footer">
-        <div class="text-center p-3" style="background-color: #6A9BBF;">
-            © 2022 Copyright:
-            <a class="text-dark" href="#">MyList.com</a>
-        </div>
-    </footer>
 </div>

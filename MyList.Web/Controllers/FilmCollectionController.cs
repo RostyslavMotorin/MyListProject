@@ -40,10 +40,10 @@ namespace MyList.Web.Controllers
         }
 
         [Authorize]
-        [HttpGet("AddToList")]
-        public async Task<ActionResult> AddToList(string id)
+        [HttpPost("AddToList")]
+        public async Task<ActionResult> AddToList(AddCollectionDto collecitonDto)
         {
-            await _filmRepository.AddToList(id);
+            await _filmRepository.AddToList(collecitonDto);
             return Ok();
         }
 

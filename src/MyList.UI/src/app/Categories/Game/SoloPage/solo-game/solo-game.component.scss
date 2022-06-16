@@ -1,13 +1,3 @@
-.mainContaiter {
-    height: 1000px;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-}
-
 .image {
     width: 268px;
     height: 348px;
@@ -15,6 +5,7 @@
 }
 
 .secondFlexContainer {
+    margin-top: 1em;
     margin-left: 140px;
 }
 
@@ -53,6 +44,7 @@ h2 {
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
+    padding: 5px;
     line-height: 29px;
     font-size: x-large;
     color: #000000;
@@ -77,12 +69,12 @@ h2 {
 .star {
     position: relative;
     width: 25px;
-    margin-top: 5px;
     padding: 2px;
     height: 25px;
 }
 
 .secondPartContainer {
+    margin-top: -50px;
     margin-left: 130px;
     margin-right: auto;
     display: flex;
@@ -105,4 +97,22 @@ h2 {
     font-style: normal;
     position: relative;
     color: black;
+}
+
+.dropdown-toggle,
+.dropdown-item {
+    cursor: pointer;
+}
+
+.me-2 {
+    margin-left: 5px;
+}
+
+.my-sm-0 {
+    margin-left: 5px;
+}
+
+.dropdown-toggle,
+.dropdown-item {
+    cursor: pointer;
 }

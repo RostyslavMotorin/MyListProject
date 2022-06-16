@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CollectionDto } from 'src/app/models/CollectionDto';
 import { GameService } from 'src/app/_services/game.service';
 
 @Component({
@@ -7,7 +8,6 @@ import { GameService } from 'src/app/_services/game.service';
   styleUrls: ['./solo-game.component.scss']
 })
 export class SoloGameComponent implements OnInit {
-
   id: string;
   item: any = {};
 
@@ -30,8 +30,9 @@ export class SoloGameComponent implements OnInit {
     });
   }
 
-  addToList(){
-    this.gameService.addToList(this.id).subscribe(response =>{
+  addToList(status : string){
+     const collection : CollectionDto = {Id: this.id, Status: status};
+    this.gameService.addToList(collection).subscribe(response =>{
       console.log(response);
     });
   }

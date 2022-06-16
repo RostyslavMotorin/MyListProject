@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CollectionDto } from '../models/CollectionDto';
 import { Game } from '../models/gameDto';
 import { ParamsModel } from '../_models/params.model';
 
@@ -35,8 +36,8 @@ export class GameService {
     return this.http.get(this.baseUrl + this.endpoint + 'Get?id='+id, { headers });
   }
 
-  addToList(id:string){
+  addToList(collection:CollectionDto){
     const headers = this.paramsModel.createHeader();
-    return this.http.get(this.baseUrl + this.endpoint + 'AddToList?id='+id, { headers });
+    return this.http.post(this.baseUrl + this.endpoint + 'AddToList', collection, { headers });
   }
 }

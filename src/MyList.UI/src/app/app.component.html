@@ -1,8 +1,20 @@
 <div class="background-image">
-    <div class="nav">
-        <app-nav></app-nav>
-    </div>
-    <div class="content">
-        <router-outlet></router-outlet>
+
+    <!-- <div class="content">
+
+    </div> -->
+    <div class="layout-container">
+        <div class="nav">
+            <app-nav></app-nav>
+        </div>
+        <main class="layout-content">
+            <router-outlet></router-outlet>
+        </main>
+        <footer class="footer">
+            <div class="text-center p-3" style="background-color: #6A9BBF;">
+                © 2022 Copyright:
+                <a class="text-dark" href="#">MyList.com</a>
+            </div>
+        </footer>
     </div>
 </div>

@@ -8,7 +8,7 @@ import { User } from '../models/user';
         private baseUrl: string = "http://localhost:5222/api/";
 
         constructor() {}
-
+        
         public getUrl() {
             return this.baseUrl;
         }
