@@ -17,6 +17,11 @@ namespace MyList.Data.Repositories
             _context = context;
         }
 
+        public override Task<IEnumerable<ApplicationUser>> GetBySearch(string search)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ApplicationUser> GetUserAsync()
         {
             var userId = _currentUserService.UserId;

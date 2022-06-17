@@ -44,7 +44,7 @@ export class SoloGameComponent implements OnInit {
   addToList(status : string){
      const collection : CollectionDto = {Id: this.id, Status: status};
     this.gameService.addToList(collection).subscribe(response =>{
-      console.log(response);
+      window.location.reload();
     });
   }
 }
