@@ -62,5 +62,13 @@ namespace MyList.Web.Controllers
             await _animeRepository.CreateASyncDto(model);
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("GetSearch")]
+        public async Task<ActionResult> GetSearch(string search)
+        {
+            var result = await _animeRepository.GetBySearch(search);
+            return Ok(result);
+        }
     }
 }

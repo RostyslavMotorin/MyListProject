@@ -2,6 +2,14 @@
     <div class="firstPartContainer">
         <div class="firstFlexContainer">
             <img class="image " src="http://localhost:5222/api/Image/GetPhoto?path={{item.pictureURL}} ">
+            <div class="secondPartContainer">
+                <div class="">
+                    <p class="rating ">{{item.globalScore}}</p>
+                </div>
+                <div class="">
+                    <img class="star " src="/assets/star.png " alt="/assets/nonAviableImage.png ">
+                </div>
+            </div>
         </div>
         <div class="secondFlexContainer">
             <h2>{{item.name}}</h2>
@@ -11,18 +19,16 @@
             <p class="p">Status: {{item.globalStatus}}</p>
             <hr class="bigHR">
             <p class="p">Date relize: {{item.relizeDate | date:'MM/dd/yyyy'}}</p>
-            <!-- <hr class="bigHR">
-        <p>Your score:{{item.userScore}}</p> -->
-            <!-- <hr class="bigHR">
-        <p>Your status:{{item.userStatus}}</p> -->
-            <hr class="bigHR">
-            <p class="p" id="tags"></p>
-            <!-- <div *ngFor="let tag of item.tags">
-                {{tag.name}}
-            </div> -->
+            <div class="userInfo" *ngIf="isUser">
+                <hr class="bigHR">
+                <p class="p">Your score: {{item.userScore}}</p>
+                <hr class="bigHR">
+                <p class="p">Your status: {{item.userStatus}}</p>
+            </div>
+
             <hr class="bigHR">
             <div class="dropdown" dropdown>
-                <a class="btn" dropdownToggle>Change status</a>
+                <a class="btn" dropdownToggle>{{this.status}}</a>
                 <div class="dropdown-menu mt-3" *bsDropdownMenu="">
                     <a class="dropdown-item" (click)="addToList('Planed')">Planed</a>
                     <div class="dropdown-divider"></div>
@@ -33,14 +39,7 @@
             </div>
         </div>
     </div>
-    <div class="secondPartContainer">
-        <div class="">
-            <p class="rating ">{{item.globalScore}}</p>
-        </div>
-        <div class="">
-            <img class="star " src="/assets/star.png " alt="/assets/nonAviableImage.png ">
-        </div>
-    </div>
+
 
     <div class="thirdPartContainer">
         <h2>About a film</h2>

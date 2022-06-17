@@ -88,6 +88,9 @@ namespace MyList.Data.Repositories
 
             if (user.Films.Any(x => x.Name == item.Name))
             {
+                item.UserStatus = collectionDto.Status;
+                _context.Films.Update(item);
+                await _context.SaveChangesAsync();
                 return;
             }
 
@@ -106,6 +109,13 @@ namespace MyList.Data.Repositories
             };
             user.Films.Add(itemClone);
             await _context.SaveChangesAsync();
+        }
+
+        public override async Task<IEnumerable<Film>> GetBySearch(string search)
+        {
+            var result = await _context.Films
+                .Where(x => EF.Functions.Like(x.Name.ToLower(), "%" + search.ToLower() + "%")).ToListAsync();
+            return result;
         }
     }
 }

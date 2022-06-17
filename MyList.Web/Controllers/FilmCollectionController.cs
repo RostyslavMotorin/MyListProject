@@ -62,5 +62,13 @@ namespace MyList.Web.Controllers
             await _filmRepository.CreateASyncDto(model);
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("GetSearch")]
+        public async Task<ActionResult> GetSearch(string search)
+        {
+            var result = await _filmRepository.GetBySearch(search);
+            return Ok(result);
+        }
     }
 }

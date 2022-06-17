@@ -17,5 +17,6 @@ namespace MyList.Domain.Common.Models.ContentModels
         public string? GlobalStatus { get; set; } //enum
         public string? GameStudio { get; set; }
         public DateTime? RelizeDate { get; set; }
+        public Guid? ApplicationUserId { get; set; }
     }
 }

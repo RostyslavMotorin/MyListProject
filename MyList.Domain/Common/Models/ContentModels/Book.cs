@@ -18,5 +18,6 @@ namespace MyList.Domain.Common.Models.ContentModels
         public ICollection<Creators>? Authors { get; set; } = new List<Creators>();
         public string? BookSeries { get; set; }
         public DateTime? RelizeDate { get; set; }
+        public Guid? ApplicationUserId { get; set; }
     }
 }

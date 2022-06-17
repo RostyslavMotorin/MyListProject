@@ -17,5 +17,6 @@ namespace MyList.Domain.Common.Models.ContentModels
         public string? GlobalStatus { get; set; } //enum
         public ICollection<Creators>? Authors { get; set; } = new List<Creators>();
         public DateTime? RelizeDate { get; set; }
+        public Guid? ApplicationUserId { get; set; }
     }
 }

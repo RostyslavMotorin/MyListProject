@@ -90,6 +90,9 @@ namespace MyList.Data.Repositories
 
             if (user.Games.Any(x => x.Name == item.Name))
             {
+                item.UserStatus = collectionDto.Status;
+                _context.Games.Update(item);
+                await _context.SaveChangesAsync();
                 return;
             }
 
@@ -112,6 +115,13 @@ namespace MyList.Data.Repositories
                 user.Games.Add(itemClone);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public override async Task<IEnumerable<Game>> GetBySearch(string search)
+        {
+            var result = await _context.Games
+                .Where(x => EF.Functions.Like(x.Name.ToLower(), "%" + search.ToLower() + "%")).ToListAsync();
+            return result;
         }
     }
 }

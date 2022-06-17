@@ -14,5 +14,6 @@ namespace MyList.Application.Common.Interfaces.Repositories
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
         Task CreateAsync(T entity);
+        Task<IEnumerable<T>> GetBySearch(string search);
     }
 }

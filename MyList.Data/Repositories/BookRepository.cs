@@ -89,6 +89,9 @@ namespace MyList.Data.Repositories
             
             if (user.Books.Any(x => x.Name == item.Name))
             {
+                item.UserStatus = collectionDto.Status;
+                _context.Books.Update(item);
+                await _context.SaveChangesAsync();
                 return;
             }
 
@@ -108,6 +111,13 @@ namespace MyList.Data.Repositories
             };
             user.Books.Add(itemClone);
             await _context.SaveChangesAsync();
+        }
+
+        public override async Task<IEnumerable<Book>> GetBySearch(string search)
+        {
+            var result = await _context.Books
+                .Where(x => EF.Functions.Like(x.Name.ToLower(), "%" + search.ToLower() + "%")).ToListAsync();
+            return result;
         }
     }
 }

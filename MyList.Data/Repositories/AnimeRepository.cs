@@ -89,6 +89,9 @@ namespace MyList.Data.Repositories
 
             if (user.Anime.Any(x => x.Name == item.Name))
             {
+                item.UserStatus = collectionDto.Status;
+                _context.Anime.Update(item);
+                await _context.SaveChangesAsync();
                 return;
             }
 
@@ -109,6 +112,13 @@ namespace MyList.Data.Repositories
             
             user.Anime.Add(itemClone);
             await _context.SaveChangesAsync();
+        }
+
+        public override async Task<IEnumerable<Anime>> GetBySearch(string search)
+        {
+            var result = await _context.Anime
+                .Where(x => EF.Functions.Like(x.Name.ToLower(), "%" + search.ToLower() + "%")).ToListAsync();
+            return result;
         }
     }
 }

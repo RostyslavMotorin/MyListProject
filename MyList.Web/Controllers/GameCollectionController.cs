@@ -62,5 +62,13 @@ namespace MyList.Web.Controllers
             await _gameRepository.CreateASyncDto(model);
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("GetSearch")]
+        public async Task<ActionResult> GetSearch(string search)
+        {
+            var result = await _gameRepository.GetBySearch(search);
+            return Ok(result);
+        }
     }
 }

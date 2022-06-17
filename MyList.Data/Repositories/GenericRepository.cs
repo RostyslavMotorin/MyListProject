@@ -74,5 +74,7 @@ namespace MyList.Data.Repositories
         {
             return await DBSet.Take(take).Skip(skip).ToListAsync();
         }
+
+        public abstract Task<IEnumerable<T>> GetBySearch(string search);
     }
 }
