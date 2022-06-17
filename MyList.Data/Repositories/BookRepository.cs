@@ -59,6 +59,8 @@ namespace MyList.Data.Repositories
         {
             List<BookTag> tags = new List<BookTag>();
             var tagsList = await _context.BookTags.ToListAsync();
+            var userId = _currentUserService.UserId;
+            var user = await _context.Users.FindAsync(userId);
 
             foreach (var tag in modelDto?.Tags)
             {
@@ -73,6 +75,8 @@ namespace MyList.Data.Repositories
                 Tags = tags,
                 PictureURL = modelDto.Picture
             };
+
+            user.Books.Add(item);
             await _context.Books.AddAsync(item);
             await _context.SaveChangesAsync();
         }

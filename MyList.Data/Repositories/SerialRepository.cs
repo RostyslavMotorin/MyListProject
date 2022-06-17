@@ -59,6 +59,8 @@ namespace MyList.Data.Repositories
         {
             List<SerialTag> tags = new List<SerialTag>();
             var tagsList = await _context.SerialTags.ToListAsync();
+            var userId = _currentUserService.UserId;
+            var user = await _context.Users.FindAsync(userId);
 
             foreach (var tag in modelDto?.Tags)
             {
@@ -73,6 +75,7 @@ namespace MyList.Data.Repositories
                 Tags = tags,
                 PictureURL = modelDto.Picture
             };
+            user.Serials.Add(item);
             await _context.Serials.AddAsync(item);
             await _context.SaveChangesAsync();
         }

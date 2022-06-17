@@ -59,6 +59,8 @@ namespace MyList.Data.Repositories
         {
             List<AnimeTag> tags = new List<AnimeTag>();
             var tagsList = await _context.AnimeTags.ToListAsync();
+            var userId = _currentUserService.UserId;
+            var user = await _context.Users.FindAsync(userId);
 
             foreach (var tag in modelDto?.Tags)
             {
@@ -73,6 +75,8 @@ namespace MyList.Data.Repositories
                 Tags = tags,
                 PictureURL = modelDto.Picture
             };
+
+            user.Anime.Add(item);
             await _context.Anime.AddAsync(item);
             await _context.SaveChangesAsync();
         }
