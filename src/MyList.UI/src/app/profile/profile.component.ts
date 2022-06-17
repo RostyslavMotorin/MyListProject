@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ParamsModel } from '../_models/params.model';
 import { UserService } from '../_services/user.service';
 
@@ -15,7 +16,7 @@ export class ProfileComponent implements OnInit {
   typeCollection: string = "";
   user: any = {};
 
-  constructor(private userService: UserService,private paramModule: ParamsModel) { }
+  constructor(private userService: UserService,private paramModule: ParamsModel, private router: Router) { }
 
   ngOnInit(): void {
     
@@ -35,7 +36,8 @@ export class ProfileComponent implements OnInit {
     this.selectedSubCollection = subCollection;
   }
 
-  test(test :any){
-    console.log(test);
+  selectItem(id :any){
+    localStorage.setItem("itemId", id);
+    this.router.navigateByUrl('game/soloGame');
   }
 }

@@ -49,21 +49,92 @@
             <h5 (click)="selectSubSection('finished')">Finished</h5>
         </div>
     </div>
-    <div class="tableContainer">
-        <table class="table">
-            <thead>
-                <th>#</th>
-                <th>Name</th>
-                <th>Rating</th>
-            </thead>
-            <tbody>
-                <tr *ngFor=" let game of user.games; let i=index" (click)="test(game.gameID)">
-                    <td>{{i}}</td>
-                    <td>{{game.name}}</td>
-                    <td>{{game.userScore}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <div class="tableContainer" [ngSwitch]="selectedCollection">
 
+        <ng-template ngSwitchCase="Serials">
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Rating</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let serial of user.serials; let i=index" (click)="selectItem(serial.serialID)">
+                        <td>{{i}}</td>
+                        <td>{{serial.name}}</td>
+                        <td>{{serial.userScore}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+
+        <ng-template ngSwitchCase="Films">
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Rating</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let film of user.films; let i=index" (click)="selectItem(film.filmID)">
+                        <td>{{i}}</td>
+                        <td>{{film.name}}</td>
+                        <td>{{film.userScore}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+
+        <ng-template ngSwitchCase="Anime">
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Rating</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let anime of user.anime; let i=index" (click)="selectItem(anime.animeID)">
+                        <td>{{i}}</td>
+                        <td>{{anime.name}}</td>
+                        <td>{{anime.userScore}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+
+        <ng-template ngSwitchCase="Games">
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Rating</th>
+                </thead>
+                <tbody>
+                    <tr class="listItem" *ngFor=" let game of user.games; let i=index" (click)="selectItem(game.gameID)">
+                        <td>{{i}}</td>
+                        <td>{{game.name}}</td>
+                        <td>{{game.userScore}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+
+        <ng-template ngSwitchCase="Books">
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Rating</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let book of user.books; let i=index" (click)="selectItem(book.bookID)">
+                        <td>{{i}}</td>
+                        <td>{{book.name}}</td>
+                        <td>{{book.userScore}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+
+    </div>
 </div>

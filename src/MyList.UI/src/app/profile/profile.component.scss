@@ -14,8 +14,13 @@
     font-family: 'JejuGothic';
 }
 
+.listItem:hover {
+    background-color: #a7a7a7;
+}
+
 .table {
     background-color: #e8e8e8;
+    cursor: pointer;
 }
 
 .planed {

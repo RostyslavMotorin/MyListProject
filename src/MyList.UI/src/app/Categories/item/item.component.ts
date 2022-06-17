@@ -23,7 +23,6 @@ export class ItemComponent implements OnInit {
   
   public navigateWithSomeState(): void {
     localStorage.setItem("itemId",this.item.id);
-    console.log(this.path);
     this.router.navigateByUrl(this.path);
     
     // this.router.navigate([this.path], { state: { id: this.item.id } });
