@@ -6,6 +6,7 @@
                 <br>
                 <h4>Gender: {{user.gender}}</h4>
                 <h4>SecondName: {{user.gender}}</h4>
+                <h4>Email: {{user.email}}</h4>
                 <h4>Age: 19</h4>
             </div>
         </div>
@@ -37,15 +38,32 @@
 
 <div class="collectionContainer" *ngIf="isActiveCollection">
     <div class="selectContainer">
+        <h2>{{selectedCollection}}</h2>
         <div class="planed">
-            <h5>Planed</h5>
+            <h5 (click)="selectSubSection('planed')">Planed</h5>
         </div>
-        <div class="progress">
-            <h5>Progress</h5>
+        <div class="progres">
+            <h5 (click)="selectSubSection('progress')">Progress</h5>
         </div>
         <div class="finished">
-            <h5>Finished</h5>
+            <h5 (click)="selectSubSection('finished')">Finished</h5>
         </div>
+    </div>
+    <div class="tableContainer">
+        <table class="table">
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Rating</th>
+            </thead>
+            <tbody>
+                <tr *ngFor=" let game of user.games; let i=index" (click)="test(game.gameID)">
+                    <td>{{i}}</td>
+                    <td>{{game.name}}</td>
+                    <td>{{game.userScore}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </div>

@@ -2,15 +2,52 @@
     margin-left: 20px;
 }
 
+.selectContainer {
+    color: #000000;
+    font-family: 'JejuGothic';
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.tableContainer {
+    color: #000000;
+    font-family: 'JejuGothic';
+}
+
+.table {
+    background-color: #e8e8e8;
+}
+
 .planed {
+    cursor: pointer;
+    color: #6a6a6a;
     display: inline-block;
 }
 
-.progress {
+.planed:hover {
+    color: #000000;
+}
+
+.progres:hover {
+    color: #000000;
+}
+
+.finished:hover {
+    color: #000000;
+}
+
+.progres {
+    cursor: pointer;
+    color: #6a6a6a;
     display: inline-block;
+    display: inline-block;
+    padding: 10px;
 }
 
 .finished {
+    cursor: pointer;
+    color: #6a6a6a;
+    display: inline-block;
     display: inline-block;
 }
 

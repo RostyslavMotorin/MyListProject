@@ -80,10 +80,29 @@ namespace MyList.Data.Repositories
         public async Task AddToList(AddCollectionDto collectionDto)
         {
             var userId = _currentUserService.UserId;
-            var item = await _context.Books.FindAsync(Guid.Parse(collectionDto.Id));
-            item.UserStatus = collectionDto.Status;
             var user = await _context.Users.FindAsync(userId);
-            user.Books.Add(item);
+            var item = await _context.Books.FindAsync(Guid.Parse(collectionDto.Id));
+            
+            if (user.Books.Any(x => x.Name == item.Name))
+            {
+                return;
+            }
+
+            Book itemClone = new Book()
+            {
+                UserStatus = collectionDto.Status,
+                BookID = new Guid(),
+                Name = item.Name,
+                Description = item.Description,
+                Tags = item.Tags,
+                BookSeries = item.BookSeries,
+                Authors = item.Authors,
+                RelizeDate = item.RelizeDate,
+                GlobalScore = item.GlobalScore,
+                GlobalStatus = item.GlobalStatus,
+                PictureURL = item.PictureURL
+            };
+            user.Books.Add(itemClone);
             await _context.SaveChangesAsync();
         }
     }

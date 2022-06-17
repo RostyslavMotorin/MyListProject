@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
 
   isActiveCollection : boolean = false;
   selectedCollection: string = "";
+  selectedSubCollection: string = "";
   typeCollection: string = "";
   user: any = {};
 
@@ -24,9 +25,17 @@ export class ProfileComponent implements OnInit {
     });
 
   }
-  selectCollection(typeOfCollection : string){
+
+  selectCollection(collection : string){
     this.isActiveCollection = true;
-    this.selectedCollection = typeOfCollection;
+    this.selectedCollection = collection;
   }
 
+  selectSubSection(subCollection : string){
+    this.selectedSubCollection = subCollection;
+  }
+
+  test(test :any){
+    console.log(test);
+  }
 }

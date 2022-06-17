@@ -82,12 +82,31 @@ namespace MyList.Data.Repositories
         public async Task AddToList(AddCollectionDto collectionDto)
         {
             var userId = _currentUserService.UserId;
+            var user = await _context.Users.FindAsync(userId);
             var item = await _context.Games.FindAsync(Guid.Parse(collectionDto.Id));
+
+            if (user.Games.Any(x => x.Name == item.Name))
+            {
+                return;
+            }
+
             if (item != null)
             {
-                item.UserStatus = collectionDto.Status;
-                var user = await _context.Users.FindAsync(userId);
-                user.Games.Add(item);
+                Game itemClone = new Game()
+                {
+                    UserStatus = collectionDto.Status,
+                    GameID = new Guid(),
+                    Name = item.Name,
+                    Description = item.Description,
+                    GameStudio = item.GameStudio,
+                    Tags = item.Tags,
+                    RelizeDate = item.RelizeDate,
+                    GlobalScore = item.GlobalScore,
+                    GlobalStatus = item.GlobalStatus,
+                    PictureURL = item.PictureURL
+                };
+
+                user.Games.Add(itemClone);
                 await _context.SaveChangesAsync();
             }
         }
