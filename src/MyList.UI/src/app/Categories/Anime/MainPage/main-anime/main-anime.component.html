@@ -1,1 +1,11 @@
-<p>main-anime works!</p>
+<div class="head">
+    <form class="inputBlock" action="search()" (submit)="searchMerhod()">
+        <input class="inp" [(ngModel)]="search" type="text" placeholder="Search.." name="search">
+    </form>
+    <a href="anime/createAnime" class="btn">Create</a>
+</div>
+<div class="itemsContaiter" *ngIf="items">
+    <div *ngFor="let item of items">
+        <app-item [item]="item" [path]="path"></app-item>
+    </div>
+</div>

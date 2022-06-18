@@ -28,7 +28,7 @@ namespace MyList.Data.Repositories
 
         public async Task<List<ItemDto>> GetAllItems()
         {
-            var contextList = await _context.Films.Where(x => x.ApplicationUserId == null).ToListAsync();
+            var contextList = await _context.Books.Where(x => x.ApplicationUserId == null).ToListAsync();
             var itemsList = _mapper.Map<List<ItemDto>>(contextList);
             foreach (var item in itemsList)
             {
@@ -55,7 +55,7 @@ namespace MyList.Data.Repositories
 
             return result;
         }
-        public async Task CreateASyncDto(BookDto modelDto)
+        public async Task CreateASyncDto(BookDto modelDto) //check to exist name
         {
             List<BookTag> tags = new List<BookTag>();
             var tagsList = await _context.BookTags.ToListAsync();

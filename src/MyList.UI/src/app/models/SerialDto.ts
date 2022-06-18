@@ -1,6 +1,6 @@
 import { Tag } from "./TagDto";
 
-export interface FilmDto{
+export interface SerialDto{
     Name: string;
     Description: string;
     Tags: Tag[];

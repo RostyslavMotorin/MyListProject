@@ -1,1 +1,57 @@
-<p>solo-anime works!</p>
+<div class="mainContaiter">
+    <div class="firstPartContainer">
+        <div class="firstFlexContainer">
+            <img class="image " src="http://localhost:5222/api/Image/GetPhoto?path={{item.pictureURL}} ">
+            <div class="secondPartContainer">
+                <div class="">
+                    <p class="rating ">{{item.globalScore}}</p>
+                </div>
+                <div class="">
+                    <img class="star " src="/assets/star.png " alt="/assets/nonAviableImage.png ">
+                </div>
+            </div>
+        </div>
+        <div class="secondFlexContainer">
+            <div class="d-flex justify-content-end">
+                <a *ngIf="isUser && editMode" class="btn-save" (click)="saveChange()">Save</a>
+                <a *ngIf="isUser" class="btn-edit" (click)="changeMode()">Edit</a>
+            </div>
+            <h2>{{item.name}}</h2>
+            <hr class="bigHR">
+            <span class="p">Status:</span> <input style="display:inline" class="input" [disabled]="!editMode" [(ngModel)]="item.globalStatus">
+            <hr class="bigHR">
+            <p class="p">Date relize: {{item.relizeDate | date:'MM/dd/yyyy'}}</p>
+            <div class="userInfo" *ngIf="isUser">
+                <hr class="bigHR">
+                <span class="p">Your score:</span> <input style="display:inline" class="input" [disabled]="!editMode" [(ngModel)]="item.userScore">
+                <hr class="bigHR">
+                <span class="p">Your status:</span> <input style="display:inline" class="input" [disabled]="!editMode" [(ngModel)]="item.userStatus">
+            </div>
+            <hr class="bigHR">
+            <p class="p" id="tags"></p>
+
+            <hr class="bigHR">
+            <div class="dropdown" dropdown>
+                <a class="btn" dropdownToggle>{{this.status}}</a>
+                <div class="dropdown-menu mt-3" *bsDropdownMenu="">
+                    <a class="dropdown-item" (click)="addToList('Planed')">Planed</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="addToList('Progress')">Progress</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="addToList('Finished')">Finished</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="thirdPartContainer">
+        <h2>About a film</h2>
+        <hr class="maxHR">
+        <p class="description">{{item.description}}</p>
+        <hr class="maxHR">
+
+    </div>
+</div>

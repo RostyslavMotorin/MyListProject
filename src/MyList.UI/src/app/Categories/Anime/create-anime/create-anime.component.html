@@ -1,1 +1,27 @@
-<p>create-anime works!</p>
+<form #registerForm="ngForm" (ngSubmit)="create()" autocomplete="off">
+    <h2 class="text-ceter text-primary"></h2>
+    <hr>
+    <div class="form-group">
+        <input type="text" class="form-control" name="Name" [(ngModel)]="model.Name" placeholder="Enter Name">
+    </div>
+    <hr>
+    <div class="form-group">
+        <input type="text" class="form-control" name="Description" [(ngModel)]="model.Description" placeholder="Enter description">
+    </div>
+    <hr>
+    <div class="form-group">
+        <input type="number" class="form-control" name="GlobalScore" [(ngModel)]="model.GlobalScore" placeholder="Enter global score">
+    </div>
+    <hr>
+    <hr>
+    <ng-multiselect-dropdown [ngModelOptions]="{standalone:true}" [placeholder]="'Select tags'" [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems">
+    </ng-multiselect-dropdown>
+    <br>
+    <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+
+    <div class="form-group text-center" style="margin-top: 50px;">
+        <button class="btn btn-success mr-2" style="margin: 3px;" type="submit">Create</button>
+        <a href="anime/mainAnime" class="btn btn-info mr-2">Cancel</a>
+    </div>
+
+</form>

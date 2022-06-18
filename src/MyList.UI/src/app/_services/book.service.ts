@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CollectionDto } from '../models/CollectionDto';
 import { ParamsModel } from '../_models/params.model';
 
 @Injectable({
@@ -33,8 +34,23 @@ export class BookService {
     return this.http.get(this.baseUrl + this.endpoint + 'Get?id='+id, { headers });
   }
 
-  addToList(id:string){
+  addToList(collection:CollectionDto){
     const headers = this.paramsModel.createHeader();
-    return this.http.get(this.baseUrl + this.endpoint + 'AddToList?id='+id, { headers });
+    return this.http.post(this.baseUrl + this.endpoint + 'AddToList', collection, { headers });
+  }
+
+  Update(item :any){
+    const headers = this.paramsModel.createHeader();
+    return this.http.post(this.baseUrl + this.endpoint + 'Update', item, { headers });
+  }
+
+  search(search :string){
+    const headers = this.paramsModel.createHeader();
+    return this.http.get<Array<any>>(this.baseUrl + this.endpoint + 'GetSearch?search=' + search, { headers });
+  }
+
+  get(id:string){
+    const headers = this.paramsModel.createHeader();
+    return this.http.get(this.baseUrl + this.endpoint + 'Get?id='+id, { headers });
   }
 }

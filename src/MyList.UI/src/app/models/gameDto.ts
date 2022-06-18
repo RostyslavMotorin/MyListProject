@@ -6,4 +6,5 @@ export interface GameDto{
     Tags: Tag[];
     Picture: any;
     GameStudio : string;
+    GlobalScore: number;
 }

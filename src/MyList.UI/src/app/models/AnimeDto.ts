@@ -1,6 +1,6 @@
 import { Tag } from "./TagDto";
 
-export interface FilmDto{
+export interface AnimeDto{
     Name: string;
     Description: string;
     Tags: Tag[];

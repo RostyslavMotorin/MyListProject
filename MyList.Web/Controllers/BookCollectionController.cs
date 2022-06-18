@@ -21,7 +21,8 @@ namespace MyList.Web.Controllers
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _bookRepository.GetAllItems());
+            var result = await _bookRepository.GetAllItems();
+            return Ok(result);
         }
 
         [Authorize]
