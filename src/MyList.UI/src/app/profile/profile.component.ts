@@ -40,4 +40,9 @@ export class ProfileComponent implements OnInit {
     localStorage.setItem("itemId", id);
     this.router.navigateByUrl('game/soloGame');
   }
+
+  // selectFilm(id :any){
+  //   localStorage.setItem("itemId", id);
+  //   this.router.navigateByUrl('game/soloGame');
+  // }
 }

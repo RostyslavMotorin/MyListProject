@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CollectionDto } from 'src/app/models/CollectionDto';
+import { ParamsModel } from 'src/app/_models/params.model';
 import { GameService } from 'src/app/_services/game.service';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -16,7 +17,7 @@ export class SoloGameComponent implements OnInit {
   status: string = "";
   editMode : boolean = false;
 
-  constructor(private gameService: GameService, userService : UserService) {
+  constructor(private gameService: GameService, userService : UserService, private paramServ: ParamsModel) {
     this.user = userService.getTokenPayload();
     console.log(this.user);
   }
@@ -26,6 +27,10 @@ export class SoloGameComponent implements OnInit {
 
     this.gameService.get(this.id).subscribe(response => {
       this.item = response;
+
+      if(this.item.globalScore ==null){
+        this.item.globalScore = this.paramServ.randomInteger(6,10).toString();
+      }
       
       if(this.item.applicationUserId == this.user.nameid){
         this.isUser = true;
@@ -38,6 +43,10 @@ export class SoloGameComponent implements OnInit {
         tagsContainer.innerHTML += tag.name + " ";
       });
       tags.appendChild(tagsContainer);
+
+      if(this.status == null){
+        this.status = "Status"
+      }
     });
 
   }
@@ -59,4 +68,5 @@ export class SoloGameComponent implements OnInit {
       window.location.reload(); 
     });
   }
+  
 }

@@ -18,4 +18,14 @@ export class ItemService {
     const headers = this.paramsModel.createHeader();
     return this.http.get<Array<Item>>(this.baseUrl + endpoint + 'GetAll', { headers });
   }
+
+  getTopGame(){
+    const headers = this.paramsModel.createHeader();
+    return this.http.get<Array<Item>>(this.baseUrl + 'GameCollection/GetTop', { headers });
+  }
+
+  getTopFilms(){
+    const headers = this.paramsModel.createHeader();
+    return this.http.get<Array<Item>>(this.baseUrl + 'FilmCollection/GetTop', { headers });
+  }
 }

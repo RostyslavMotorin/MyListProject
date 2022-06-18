@@ -19,8 +19,15 @@ export class ItemComponent implements OnInit {
   constructor(private router : Router) { }
 
   ngOnInit(): void {
+    if(this.item.rating ==""){
+      this.item.rating = this.randomInteger(7, 10).toString();
+    }
   }
-  
+  randomInteger(min, max) {
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
+  }
+
   public navigateWithSomeState(): void {
     localStorage.setItem("itemId",this.item.id);
     this.router.navigateByUrl(this.path);

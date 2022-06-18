@@ -1,5 +1,49 @@
-<div class="container mt-5">
-    <div style="text-align: center;">
-        <h1>Home page</h1>
+<br>
+<div class="Container">
+    <a href="game/mainGame">Games:</a>
+    <div class="itemContainer" *ngIf="gameItems">
+        <div *ngFor="let item of gameItems">
+            <app-item [item]="item" [path]="gamePath"></app-item>
+        </div>
+    </div>
+</div>
+
+<div class="Container">
+    <a href="film/mainFilm">Films:</a>
+    <div class="itemContainer" *ngIf="filmItems">
+
+        <div *ngFor="let item of filmItems">
+            <app-item [item]="item" [path]="filmPath"></app-item>
+        </div>
+    </div>
+</div>
+
+<div class="Container">
+    <a href="book/mainBook">Books:</a>
+    <div class="itemContainer" *ngIf="gameItems">
+
+        <div *ngFor="let item of gameItems">
+            <app-item [item]="item" [path]="gamePath"></app-item>
+        </div>
+    </div>
+</div>
+
+<div class="Container">
+    <a href="anime/mainAnime">Anime:</a>
+    <div class="itemContainer" *ngIf="gameItems">
+
+        <div *ngFor="let item of gameItems">
+            <app-item [item]="item" [path]="gamePath"></app-item>
+        </div>
+    </div>
+</div>
+
+<div class="Container">
+    <a href="serial/mainSerial">Serials:</a>
+    <div class="itemContainer" *ngIf="gameItems">
+
+        <div *ngFor="let item of gameItems">
+            <app-item [item]="item" [path]="gamePath"></app-item>
+        </div>
     </div>
 </div>

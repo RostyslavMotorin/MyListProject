@@ -28,7 +28,7 @@ namespace MyList.Data.Repositories
 
         public async Task<List<ItemDto>> GetAllItems()
         {
-            var contextList = await _context.Films.ToListAsync();
+            var contextList = await _context.Films.Where(x => x.ApplicationUserId == null).ToListAsync();
             var itemsList = _mapper.Map<List<ItemDto>>(contextList);
             foreach (var item in itemsList)
             {
@@ -70,6 +70,7 @@ namespace MyList.Data.Repositories
             var item = new Film()
             {
                 FilmID = new Guid(),
+                GlobalScore = modelDto.GlobalScore,
                 Name = modelDto.Name,
                 Description = modelDto.Description,
                 Tags = tags,
@@ -120,7 +121,7 @@ namespace MyList.Data.Repositories
 
         public async override Task<IEnumerable<ItemDto>> GetTop()
         {
-            var itemsList = _context.Films.Take(12).Where(x => x.ApplicationUserId == null).OrderBy(x => x.GlobalScore).ToListAsync();
+            var itemsList = await _context.Films.Take(5).Where(x => x.ApplicationUserId == null).OrderByDescending(x => x.GlobalScore).ToListAsync();
             var result = _mapper.Map<List<ItemDto>>(itemsList);
             foreach (var item in result)
             {
