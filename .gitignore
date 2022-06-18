@@ -9,7 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-MyList.Web\Resources\Images
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -177,7 +177,7 @@ DocProject/Help/*.hhk
 DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
-
+MyList.Web/Resources/Images
 # Click-Once directory
 publish/
 
