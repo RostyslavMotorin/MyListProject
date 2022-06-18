@@ -1,12 +1,5 @@
 <br>
-<div class="Container">
-    <a href="game/mainGame">Games:</a>
-    <div class="itemContainer" *ngIf="gameItems">
-        <div *ngFor="let item of gameItems">
-            <app-item [item]="item" [path]="gamePath"></app-item>
-        </div>
-    </div>
-</div>
+
 
 <div class="Container">
     <a href="film/mainFilm">Films:</a>
@@ -20,28 +13,37 @@
 
 <div class="Container">
     <a href="book/mainBook">Books:</a>
-    <div class="itemContainer" *ngIf="gameItems">
+    <div class="itemContainer" *ngIf="bookItems">
 
-        <div *ngFor="let item of gameItems">
-            <app-item [item]="item" [path]="gamePath"></app-item>
+        <div *ngFor="let item of bookItems">
+            <app-item [item]="item" [path]="bookPath"></app-item>
         </div>
     </div>
 </div>
 
 <div class="Container">
     <a href="anime/mainAnime">Anime:</a>
-    <div class="itemContainer" *ngIf="gameItems">
+    <div class="itemContainer" *ngIf="animeItems">
 
-        <div *ngFor="let item of gameItems">
-            <app-item [item]="item" [path]="gamePath"></app-item>
+        <div *ngFor="let item of animeItems">
+            <app-item [item]="item" [path]="animePath"></app-item>
         </div>
     </div>
 </div>
 
 <div class="Container">
     <a href="serial/mainSerial">Serials:</a>
-    <div class="itemContainer" *ngIf="gameItems">
+    <div class="itemContainer" *ngIf="serialItems">
 
+        <div *ngFor="let item of serialItems">
+            <app-item [item]="item" [path]="serialPath"></app-item>
+        </div>
+    </div>
+</div>
+
+<div class="Container">
+    <a href="game/mainGame">Games:</a>
+    <div class="itemContainer" *ngIf="gameItems">
         <div *ngFor="let item of gameItems">
             <app-item [item]="item" [path]="gamePath"></app-item>
         </div>

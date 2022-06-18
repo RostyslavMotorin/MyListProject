@@ -28,4 +28,19 @@ export class ItemService {
     const headers = this.paramsModel.createHeader();
     return this.http.get<Array<Item>>(this.baseUrl + 'FilmCollection/GetTop', { headers });
   }
+
+  getTopBooks(){
+    const headers = this.paramsModel.createHeader();
+    return this.http.get<Array<Item>>(this.baseUrl + 'BookCollection/GetTop', { headers });
+  }
+
+  getTopAnime(){
+    const headers = this.paramsModel.createHeader();
+    return this.http.get<Array<Item>>(this.baseUrl + 'AnimeCollection/GetTop', { headers });
+  }
+
+  getTopSerials(){
+    const headers = this.paramsModel.createHeader();
+    return this.http.get<Array<Item>>(this.baseUrl + 'SerialCollection/GetTop', { headers });
+  }
 }
