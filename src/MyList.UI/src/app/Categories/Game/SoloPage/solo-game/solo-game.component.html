@@ -12,19 +12,25 @@
             </div>
         </div>
         <div class="secondFlexContainer">
+            <div class="d-flex justify-content-end">
+                <a *ngIf="isUser && editMode" class="btn-save" (click)="saveChange()">Save</a>
+                <a *ngIf="isUser" class="btn-edit" (click)="changeMode()">Edit</a>
+            </div>
             <h2>{{item.name}}</h2>
             <hr class="bigHR">
-            <p class="p">Game studio: {{item.gameStudio}}</p>
+            <span class="p">Game studio:</span> <input style="display:inline" class="input" [disabled]="!editMode" [(ngModel)]="item.gameStudio">
             <hr class="bigHR">
-            <p class="p">Status: {{item.globalStatus}}</p>
+            <span class="p">Status:</span> <input style="display:inline" class="input" [disabled]="!editMode" [(ngModel)]="item.globalStatus">
             <hr class="bigHR">
             <p class="p">Date relize: {{item.relizeDate | date:'MM/dd/yyyy'}}</p>
             <div class="userInfo" *ngIf="isUser">
                 <hr class="bigHR">
-                <p class="p">Your score: {{item.userScore}}</p>
+                <span class="p">Your score:</span> <input style="display:inline" class="input" [disabled]="!editMode" [(ngModel)]="item.userScore">
                 <hr class="bigHR">
-                <p class="p">Your status: {{item.userStatus}}</p>
+                <span class="p">Your status:</span> <input style="display:inline" class="input" [disabled]="!editMode" [(ngModel)]="item.userStatus">
             </div>
+            <hr class="bigHR">
+            <p class="p" id="tags"></p>
 
             <hr class="bigHR">
             <div class="dropdown" dropdown>
@@ -37,6 +43,8 @@
                     <a class="dropdown-item" (click)="addToList('Finished')">Finished</a>
                 </div>
             </div>
+
+
         </div>
     </div>
 

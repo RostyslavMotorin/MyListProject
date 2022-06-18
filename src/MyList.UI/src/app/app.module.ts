@@ -31,6 +31,7 @@ import { MainFilmComponent } from './Categories/Film/MainPage/main-film/main-fil
 import { SoloFilmComponent } from './Categories/Film/SoloPage/solo-film/solo-film.component';
 import { CreateFilmComponent } from './Categories/Film/create-film/create-film.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ItemListComponent } from './Categories/item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ProfileComponent } from './profile/profile.component';
     SoloFilmComponent,
     CreateFilmComponent,
     ProfileComponent,
+    ItemListComponent,
   ],
   imports: [
     BrowserModule,

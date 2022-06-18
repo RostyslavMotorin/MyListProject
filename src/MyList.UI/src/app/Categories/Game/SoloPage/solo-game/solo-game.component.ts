@@ -14,6 +14,7 @@ export class SoloGameComponent implements OnInit {
   user : any = {};
   isUser: boolean = false;
   status: string = "";
+  editMode : boolean = false;
 
   constructor(private gameService: GameService, userService : UserService) {
     this.user = userService.getTokenPayload();
@@ -45,6 +46,17 @@ export class SoloGameComponent implements OnInit {
      const collection : CollectionDto = {Id: this.id, Status: status};
     this.gameService.addToList(collection).subscribe(response =>{
       window.location.reload();
+    });
+  }
+
+  changeMode(){
+    this.editMode = !this.editMode; 
+  }
+
+  saveChange(){
+    this.item.tags = [];
+    this.gameService.Update(this.item).subscribe(resp =>{
+      window.location.reload(); 
     });
   }
 }

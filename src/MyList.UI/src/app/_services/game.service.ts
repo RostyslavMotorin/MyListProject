@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CollectionDto } from '../models/CollectionDto';
-import { Game } from '../models/gameDto';
+import { Game } from '../models/Game';
+import { GameDto } from '../models/gameDto';
+import { Item } from '../models/itemDto';
 import { ParamsModel } from '../_models/params.model';
 
 
@@ -27,7 +29,7 @@ export class GameService {
     return this.http.get(this.baseUrl + this.endpoint + 'GetAllTags', { headers });
   }
 
-  create(model: Game) {
+  create(model: GameDto) {
     const headers = this.paramsModel.createHeader();
     return this.http.post(this.baseUrl + this.endpoint + 'Create', model, { headers });
   }
@@ -39,5 +41,15 @@ export class GameService {
   addToList(collection:CollectionDto){
     const headers = this.paramsModel.createHeader();
     return this.http.post(this.baseUrl + this.endpoint + 'AddToList', collection, { headers });
+  }
+
+  Update(item :Game){
+    const headers = this.paramsModel.createHeader();
+    return this.http.post(this.baseUrl + this.endpoint + 'Update', item, { headers });
+  }
+
+  search(search :string){
+    const headers = this.paramsModel.createHeader();
+    return this.http.get<Array<any>>(this.baseUrl + this.endpoint + 'GetSearch?search=' + search, { headers });
   }
 }

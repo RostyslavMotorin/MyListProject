@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyList.Application.Common.Dto;
 using MyList.Application.Common.Interfaces.Repositories;
+using MyList.Domain.Common.Models.ContentModels;
 
 namespace MyList.Web.Controllers
 {
@@ -69,6 +70,14 @@ namespace MyList.Web.Controllers
         {
             var result = await _animeRepository.GetBySearch(search);
             return Ok(result);
+        }
+
+        [Authorize]
+        [HttpPost("Update")]
+        public async Task<ActionResult> Update(Anime item)
+        {
+            await _animeRepository.UpdateAsync(item);
+            return Ok();
         }
     }
 }

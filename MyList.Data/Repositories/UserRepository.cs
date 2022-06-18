@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyList.Application.Common.Dto;
 using MyList.Application.Common.Interfaces;
 using MyList.Application.Common.Interfaces.Repositories;
 using MyList.Domain.Common.Models;
@@ -18,6 +19,11 @@ namespace MyList.Data.Repositories
         }
 
         public override Task<IEnumerable<ApplicationUser>> GetBySearch(string search)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Task<IEnumerable<ItemDto>> GetTop()
         {
             throw new NotImplementedException();
         }

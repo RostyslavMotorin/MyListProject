@@ -11,7 +11,7 @@ export class ItemComponent implements OnInit {
   @Input() item : Item = {
     id: '',
     name: '',
-    image: '',
+    pictureURL: '',
     rating: ''
   };
   @Input() path : string;

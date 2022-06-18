@@ -1,6 +1,6 @@
 import { Tag } from "./TagDto";
 
-export interface Game{
+export interface GameDto{
     Name: string;
     Description: string;
     Tags: Tag[];

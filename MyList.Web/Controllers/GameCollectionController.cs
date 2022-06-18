@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyList.Application.Common.Interfaces.Repositories;
 using MyList.Application.Common.Dto;
+using MyList.Domain.Common.Models.ContentModels;
 
 namespace MyList.Web.Controllers
 {
@@ -20,7 +21,8 @@ namespace MyList.Web.Controllers
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _gameRepository.GetAllItems());
+            var result = await _gameRepository.GetAllItems();
+            return Ok(result);
         }
 
         [Authorize]
@@ -70,5 +72,14 @@ namespace MyList.Web.Controllers
             var result = await _gameRepository.GetBySearch(search);
             return Ok(result);
         }
+
+        [Authorize]
+        [HttpPost("Update")]
+        public async Task<ActionResult> Update(Game item)
+        {
+            await _gameRepository.UpdateAsync(item);
+            return Ok();
+        }
+
     }
 }

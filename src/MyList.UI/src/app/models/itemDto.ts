@@ -1,6 +1,6 @@
 export interface Item{
     id: string;
     name: string;
-    image: string;
+    pictureURL: string;
     rating: string;
 }

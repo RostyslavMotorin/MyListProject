@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using MyList.Application.Common.Dto;
 using MyList.Application.Common.Interfaces.Repositories;
 
 namespace MyList.Data.Repositories
@@ -76,5 +77,7 @@ namespace MyList.Data.Repositories
         }
 
         public abstract Task<IEnumerable<T>> GetBySearch(string search);
+
+        public abstract Task<IEnumerable<ItemDto>> GetTop();
     }
 }

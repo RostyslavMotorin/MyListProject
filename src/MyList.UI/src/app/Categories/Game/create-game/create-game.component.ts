@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Game } from 'src/app/models/gameDto';
+import { GameDto } from 'src/app/models/gameDto';
 import { GameService } from 'src/app/_services/game.service';
 import { Tag } from 'src/app/models/TagDto';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-game.component.scss']
 })
 export class CreateGameComponent implements OnInit {
-  model: Partial<Game>;
+  model: Partial<GameDto>;
   file : any;
   public response :any =  {dbPath:''};
 
@@ -41,7 +41,7 @@ export class CreateGameComponent implements OnInit {
   create() {
     this.model.Tags = this.selectedItems;
     this.model.Picture = this.response.dbPath;
-    this.gameServivce.create(this.model as Game).subscribe(response => {
+    this.gameServivce.create(this.model as GameDto).subscribe(response => {
     this.router.navigateByUrl('game/mainGame');
     }, error => {
       console.log(error)

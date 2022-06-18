@@ -33,9 +33,9 @@ namespace MyList.Data.Repositories
             var itemsList = _mapper.Map<List<ItemDto>>(contextList);
             foreach (var item in itemsList)
             {
-                if (item.Image == "")
+                if (item.PictureURL == "")
                 {
-                    item.Image = "Resources/Images/nonAviableImage.png";
+                    item.PictureURL = "Resources/Images/nonAviableImage.png";
                 }
             }
             return itemsList;
@@ -121,6 +121,20 @@ namespace MyList.Data.Repositories
         {
             var result = await _context.Games
                 .Where(x => EF.Functions.Like(x.Name.ToLower(), "%" + search.ToLower() + "%")).ToListAsync();
+            return result;
+        }
+
+        public async override Task<IEnumerable<ItemDto>> GetTop()
+        {
+            var itemsList = _context.Games.Take(12).Where(x=>x.ApplicationUserId == null).OrderBy(x => x.GlobalScore).ToListAsync();
+            var result = _mapper.Map<List<ItemDto>>(itemsList);
+            foreach (var item in result)
+            {
+                if (item.PictureURL == "")
+                {
+                    item.PictureURL = "Resources/Images/nonAviableImage.png";
+                }
+            }
             return result;
         }
     }

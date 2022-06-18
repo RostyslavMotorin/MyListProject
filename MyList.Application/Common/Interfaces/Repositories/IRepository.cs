@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using MyList.Application.Common.Dto;
 
 namespace MyList.Application.Common.Interfaces.Repositories
 {
@@ -15,5 +16,6 @@ namespace MyList.Application.Common.Interfaces.Repositories
         Task DeleteAsync(T entity);
         Task CreateAsync(T entity);
         Task<IEnumerable<T>> GetBySearch(string search);
+        Task<IEnumerable<ItemDto>> GetTop();
     }
 }
