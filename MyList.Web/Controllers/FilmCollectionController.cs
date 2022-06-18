@@ -79,5 +79,13 @@ namespace MyList.Web.Controllers
             await _filmRepository.UpdateAsync(item);
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("GetTop")]
+        public async Task<ActionResult> GetTop()
+        {
+            var result = await _filmRepository.GetTop();
+            return Ok(result);
+        }
     }
 }

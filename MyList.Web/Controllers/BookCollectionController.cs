@@ -79,5 +79,13 @@ namespace MyList.Web.Controllers
             await _bookRepository.UpdateAsync(item);
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("GetTop")]
+        public async Task<ActionResult> GetTop()
+        {
+            var result = await _bookRepository.GetTop();
+            return Ok(result);
+        }
     }
 }

@@ -81,5 +81,12 @@ namespace MyList.Web.Controllers
             return Ok();
         }
 
+        [Authorize]
+        [HttpGet("GetTop")]
+        public async Task<ActionResult> GetTop()
+        {
+            var result = await _gameRepository.GetTop();
+            return Ok(result);
+        }
     }
 }

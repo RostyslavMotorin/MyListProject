@@ -79,5 +79,13 @@ namespace MyList.Web.Controllers
             await _serialRepository.UpdateAsync(item);
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("GetTop")]
+        public async Task<ActionResult> GetTop()
+        {
+            var result = await _serialRepository.GetTop();
+            return Ok(result);
+        }
     }
 }

@@ -79,5 +79,13 @@ namespace MyList.Web.Controllers
             await _animeRepository.UpdateAsync(item);
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("GetTop")]
+        public async Task<ActionResult> GetTop()
+        {
+            var result = await _animeRepository.GetTop();
+            return Ok(result);
+        }
     }
 }
