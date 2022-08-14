@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyList.Application.Common.Dto;
 using MyList.Application.Common.Interfaces.Repositories;
 using MyList.Domain.Common.Models.ContentModels;
+using MyList.Web.Services;
 
 namespace MyList.Web.Controllers
 {
@@ -11,8 +12,10 @@ namespace MyList.Web.Controllers
     {
         private readonly ISerialRepository _serialRepository;
         private readonly IMapper _mapper;
-        public SerialCollectionController(ISerialRepository serialRepository, IMapper mapper)
+        private readonly SearchService _searchService;
+        public SerialCollectionController(SearchService searchService,ISerialRepository serialRepository, IMapper mapper)
         {
+            _searchService = searchService;
             _serialRepository = serialRepository;
             _mapper = mapper;
         }
@@ -68,7 +71,7 @@ namespace MyList.Web.Controllers
         [HttpGet("GetSearch")]
         public async Task<ActionResult> GetSearch(string search)
         {
-            var result = await _serialRepository.GetBySearch(search);
+            var result = await _searchService.SearchSerial(search);
             return Ok(result);
         }
 

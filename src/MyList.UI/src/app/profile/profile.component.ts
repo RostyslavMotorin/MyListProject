@@ -16,6 +16,12 @@ export class ProfileComponent implements OnInit {
   typeCollection: string = "";
   user: any = {};
 
+  gamePath :string = "game/soloGame";
+  animePath :string = "anime/soloAnime";
+  serialPath :string = "serial/soloSerial";
+  filmPath :string = "film/soloFilm";
+  bookPath :string = "book/soloBook";
+
   constructor(private userService: UserService,private paramModule: ParamsModel, private router: Router) { }
 
   ngOnInit(): void {
@@ -36,13 +42,9 @@ export class ProfileComponent implements OnInit {
     this.selectedSubCollection = subCollection;
   }
 
-  selectItem(id :any){
+  selectItem(id :any, path: string){
     localStorage.setItem("itemId", id);
-    this.router.navigateByUrl('game/soloGame');
+    this.router.navigateByUrl(path);
   }
 
-  // selectFilm(id :any){
-  //   localStorage.setItem("itemId", id);
-  //   this.router.navigateByUrl('game/soloGame');
-  // }
 }

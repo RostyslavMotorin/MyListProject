@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyList.Application.Common.Dto;
 using MyList.Application.Common.Interfaces.Repositories;
 using MyList.Domain.Common.Models.ContentModels;
+using MyList.Web.Services;
 
 namespace MyList.Web.Controllers
 {
@@ -11,8 +12,10 @@ namespace MyList.Web.Controllers
     {
         private readonly IAnimeRepository _animeRepository;
         private readonly IMapper _mapper;
-        public AnimeCollectionController(IAnimeRepository animeRepository, IMapper mapper)
+        private readonly SearchService _searchService;
+        public AnimeCollectionController(IAnimeRepository animeRepository, IMapper mapper, SearchService searchService)
         {
+            _searchService = searchService;
             _animeRepository = animeRepository;
             _mapper = mapper;
         }
@@ -68,7 +71,7 @@ namespace MyList.Web.Controllers
         [HttpGet("GetSearch")]
         public async Task<ActionResult> GetSearch(string search)
         {
-            var result = await _animeRepository.GetBySearch(search);
+            var result = await _searchService.SearchAnime(search);
             return Ok(result);
         }
 

@@ -16,9 +16,13 @@ export class ItemComponent implements OnInit {
   };
   @Input() path : string;
 
+  isImage : boolean = false;
   constructor(private router : Router) { }
 
   ngOnInit(): void {
+    if(this.item.pictureURL.includes("http")){
+      this.isImage = true;
+    }
     if(this.item.rating ==""){
       this.item.rating = this.randomInteger(7, 10).toString();
     }

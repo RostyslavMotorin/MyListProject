@@ -16,6 +16,10 @@ namespace MyList.Web.Extensions
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddScoped<IAuthorizeService, AuthorizeService>();
             services.AddScoped<ICurrentUserService, CurrentUserService>();
+
+            services.AddScoped<SearchService>();
+
+
             services.AddAutoMapper(typeof(AppMappingProfile));
             services.AddHttpContextAccessor();
 

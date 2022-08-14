@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyList.Application.Common.Dto;
 using MyList.Application.Common.Interfaces.Repositories;
 using MyList.Domain.Common.Models.ContentModels;
+using MyList.Web.Services;
 
 namespace MyList.Web.Controllers
 {
@@ -11,8 +12,10 @@ namespace MyList.Web.Controllers
     {
         private readonly IFilmRepository _filmRepository;
         private readonly IMapper _mapper;
-        public FilmCollectionController(IFilmRepository filmRepository, IMapper mapper)
+        private readonly SearchService _searchService;
+        public FilmCollectionController(SearchService  searchService,IFilmRepository filmRepository, IMapper mapper)
         {
+            _searchService = searchService;
             _filmRepository = filmRepository;
             _mapper = mapper;
         }
@@ -68,7 +71,7 @@ namespace MyList.Web.Controllers
         [HttpGet("GetSearch")]
         public async Task<ActionResult> GetSearch(string search)
         {
-            var result = await _filmRepository.GetBySearch(search);
+            var result = await _searchService.SearchFilm(search);
             return Ok(result);
         }
 

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyList.Application.Common.Dto;
 using MyList.Application.Common.Interfaces.Repositories;
 using MyList.Domain.Common.Models.ContentModels;
+using MyList.Web.Services;
 
 namespace MyList.Web.Controllers
 {
@@ -11,8 +12,10 @@ namespace MyList.Web.Controllers
     {
         private readonly IBookRepository _bookRepository;
         private readonly IMapper _mapper;
-        public BookCollectionController(IBookRepository bookRepository, IMapper mapper)
+        private readonly SearchService _search;
+        public BookCollectionController(IBookRepository bookRepository, IMapper mapper, SearchService search)
         {
+            _search = search;
             _bookRepository = bookRepository;
             _mapper = mapper;
         }
@@ -69,7 +72,7 @@ namespace MyList.Web.Controllers
         [HttpGet("GetSearch")]
         public async Task<ActionResult> GetSearch(string search)
         {
-            var result = await _bookRepository.GetBySearch(search);
+            var result = await _search.SearchBooks(search);
             return Ok(result);
         }
 

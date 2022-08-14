@@ -14,7 +14,7 @@ import { User } from '../models/user';
         }
 
         createHeader() {
-            var user: User = JSON.parse(localStorage.getItem("user")!!);
+            let user: User = JSON.parse(localStorage.getItem("user")!!);
             let token = "Bearer ";
             token += user.token;
         

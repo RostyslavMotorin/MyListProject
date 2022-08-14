@@ -17,6 +17,7 @@ export class SoloBookComponent implements OnInit {
   isUser: boolean = false;
   status: string = "";
   editMode : boolean = false;
+  isImage : boolean = false;
 
   constructor(private bookService: BookService, userService : UserService, private paramServ: ParamsModel) {
     this.user = userService.getTokenPayload();
@@ -48,6 +49,10 @@ export class SoloBookComponent implements OnInit {
 
       if(this.status == null){
         this.status = "Status"
+      }
+
+      if(this.item.pictureURL.includes("http")){
+        this.isImage = true;
       }
     });
 

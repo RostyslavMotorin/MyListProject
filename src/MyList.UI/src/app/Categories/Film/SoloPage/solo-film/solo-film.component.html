@@ -1,7 +1,8 @@
 <div class="mainContaiter">
     <div class="firstPartContainer">
         <div class="firstFlexContainer">
-            <img class="image " src="http://localhost:5222/api/Image/GetPhoto?path={{item.pictureURL}} ">
+            <img class="image " *ngIf="!isImage" src="http://localhost:5222/api/Image/GetPhoto?path={{item.pictureURL}} ">
+            <img class="image " *ngIf="isImage" src="{{item.pictureURL}}">
             <div class="secondPartContainer">
                 <div class="">
                     <p class="rating ">{{item.globalScore}}</p>
@@ -25,7 +26,7 @@
                 <hr class="bigHR">
                 <span class="p">Your score:</span> <input style="display:inline" class="input" [disabled]="!editMode" [(ngModel)]="item.userScore">
                 <hr class="bigHR">
-                <span class="p">Your status:</span> <input style="display:inline" class="input" [disabled]="!editMode" [(ngModel)]="item.userStatus">
+                <span class="p">Your status:</span> <input style="display:inline" class="input" [disabled]="true" [(ngModel)]="item.userStatus">
             </div>
             <hr class="bigHR">
             <p class="p" id="tags"></p>
@@ -48,7 +49,7 @@
 
 
     <div class="thirdPartContainer">
-        <h2>About a film</h2>
+        <h2>About</h2>
         <hr class="maxHR">
         <p class="description">{{item.description}}</p>
         <hr class="maxHR">

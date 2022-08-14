@@ -18,6 +18,7 @@ export class SoloAnimeComponent implements OnInit {
   status: string = "";
   editMode : boolean = false;
 
+  isImage : boolean = false;
   constructor(private animeService: AnimeService, userService : UserService, private paramServ: ParamsModel) {
     this.user = userService.getTokenPayload();
     console.log(this.user);
@@ -46,6 +47,10 @@ export class SoloAnimeComponent implements OnInit {
       });
       tags.appendChild(tagsContainer);
 
+      if(this.item.pictureURL.includes("http")){
+        this.isImage = true;
+      }
+      
       if(this.status == null){
         this.status = "Status"
       }
